@@ -14,9 +14,16 @@ import * as Request from 'request';
 import * as Archiver from 'archiver';
 import { isString, forIn, isNil, isPlainObject } from 'lodash';
 import { replaceTabsWithSpaces, clipText } from './core/utilities';
-import { BadRequestError, UnauthorizedError, InformationalError } from './core/errors';
+import {
+  BadRequestError,
+  UnauthorizedError,
+  InformationalError,
+} from './core/errors';
 import { Strings, getExplicitlySetDisplayLanguageOrNull } from './strings';
-import { loadTemplateHelper, IDefaultHandlebarsContext } from './core/template.generator';
+import {
+  loadTemplateHelper,
+  IDefaultHandlebarsContext,
+} from './core/template.generator';
 import { compileScript } from './core/snippet.generator';
 import { processLibraries } from './core/libraries.processor';
 import { ApplicationInsights } from './core/ai.helper';
@@ -41,15 +48,16 @@ import {
 } from './custom-functions/utilities';
 import { parseMetadata } from './custom-functions/metadata.parser';
 
-const moment = require('moment');
-const uuidV4 = require('uuid/v4');
+import moment from 'moment';
+import uuidV4 from 'uuid/v4';
 
-const {
+import {
   build,
   config,
   secrets,
   USE_LOCAL_OFFLINE_COPY_OF_OFFICE_JS,
-} = require('./core/env.config.js');
+} from './core/env.config.js';
+
 const env = process.env.PG_ENV || 'local';
 const currentConfig = config[env] as IEnvironmentConfig;
 const isLocal = currentConfig.name === 'LOCAL';
@@ -57,7 +65,8 @@ const ai = new ApplicationInsights(currentConfig.instrumentationKey);
 const app = express();
 
 let scriptLabVersionNumber;
-const SCRIPT_LAB_STORE_URL = 'https://store.office.com/app/query?type=5&cmo=en-US&rt=xml';
+const SCRIPT_LAB_STORE_URL =
+  'https://store.office.com/app/query?type=5&cmo=en-US&rt=xml';
 const SCRIPT_LAB_STORE_ID = 'wa104380862';
 
 const ONE_HOUR_MS = 3600000;
@@ -161,15 +170,15 @@ setInterval(() => {
  */
 if (process.env.NODE_ENV === 'production') {
   app.listen(process.env.port || 1337, () =>
-    console.log(`Script Lab Runner listening on port ${process.env.PORT}`)
+    console.log(`Script Lab Runner listening on port ${process.env.PORT}`),
   );
 } else {
   const cert = {
     key: fs.readFileSync(
-      path.resolve('node_modules/browser-sync/lib/server/certs/server.key')
+      path.resolve('node_modules/browser-sync/lib/server/certs/server.key'),
     ),
     cert: fs.readFileSync(
-      path.resolve('node_modules/browser-sync/lib/server/certs/server.crt')
+      path.resolve('node_modules/browser-sync/lib/server/certs/server.crt'),
     ),
   };
   https
@@ -196,15 +205,17 @@ registerRoute(
         host: null,
         id: null,
         query: req.query,
-        explicitlySetDisplayLanguageOrNull: getExplicitlySetDisplayLanguageOrNull(req),
+        explicitlySetDisplayLanguageOrNull: getExplicitlySetDisplayLanguageOrNull(
+          req,
+        ),
       },
       Strings(req),
-      res
-    )
+      res,
+    ),
 );
 
 registerRoute('get', ['/compile/custom-functions'], (req, res) =>
-  Promise.resolve().then(() => respondWith(res, '', 'text/html'))
+  Promise.resolve().then(() => respondWith(res, '', 'text/html')),
 );
 
 /**
@@ -223,11 +234,13 @@ registerRoute('get', ['/run/:host', '/run/:host/:id'], (req, res) =>
       host: req.params.host,
       id: req.params.id,
       query: req.query,
-      explicitlySetDisplayLanguageOrNull: getExplicitlySetDisplayLanguageOrNull(req),
+      explicitlySetDisplayLanguageOrNull: getExplicitlySetDisplayLanguageOrNull(
+        req,
+      ),
     },
     Strings(req),
-    res
-  )
+    res,
+  ),
 );
 
 /**
@@ -267,18 +280,20 @@ registerRoute('post', '/auth/:user', (req, res) => {
         timer.stop();
         if (error) {
           ai.trackEvent('[Github] Login failed', { user });
-          return reject(new UnauthorizedError(strings.failedToAuthenticateUser, error));
+          return reject(
+            new UnauthorizedError(strings.failedToAuthenticateUser, error),
+          );
         } else {
           ai.trackEvent('[Github] Login succeeded', { user });
           return resolve(body);
         }
-      }
+      },
     );
   }).then(token =>
     res
       .contentType('application/json')
       .status(200)
-      .send(token)
+      .send(token),
   );
 });
 
@@ -293,7 +308,7 @@ registerRoute('post', '/compile/snippet', compileSnippetCommon);
  * Returns the entire page (with runner chrome) of the compiled snippet
  */
 registerRoute('post', '/compile/page', (req, res) =>
-  compileSnippetCommon(req, res, true /*wrapWithRunnerChrome*/)
+  compileSnippetCommon(req, res, true /*wrapWithRunnerChrome*/),
 );
 
 /**
@@ -308,7 +323,7 @@ registerRoute('post', '/custom-functions/run', async (req, res) => {
   snippets = snippets.filter(snippet => {
     const result = parseMetadata(
       transformSnippetName(snippet.name),
-      snippet.script.content
+      snippet.script.content,
     );
     const isGoodSnippet =
       result.length > 0 && !result.some(func => (func.error ? true : false));
@@ -347,12 +362,14 @@ registerRoute('post', '/custom-functions/run', async (req, res) => {
         true /*isInsideOfficeApp*/,
         {
           customFunctionsIfAny: snippet.metadata.functions.map(func => ({
-            fullName: `${snippet.metadata.namespace}.${func.funcName}`.toUpperCase(),
+            fullName: `${snippet.metadata.namespace}.${
+              func.funcName
+            }`.toUpperCase(),
             funcName: func.funcName,
           })),
-        }
+        },
       );
-    })
+    }),
   );
 
   const customFunctionsOfficeJsLocation = `${currentConfig.editorUrl}/assets/${
@@ -364,10 +381,12 @@ registerRoute('post', '/custom-functions/run', async (req, res) => {
   const html = customFunctionsRunnerGenerator({
     customFunctionsOfficeJsLocation,
     snippetsDataBase64: base64encode(
-      JSON.stringify(snippetCompileResults.map(result => result.html))
+      JSON.stringify(snippetCompileResults.map(result => result.html)),
     ),
     metadataBase64: base64encode(
-      JSON.stringify(snippets.map(snippet => ({ id: snippet.id, ...snippet.metadata })))
+      JSON.stringify(
+        snippets.map(snippet => ({ id: snippet.id, ...snippet.metadata })),
+      ),
     ),
     clientTimestamp: params.heartbeatParams.clientTimestamp,
     loadFromOfficeJsPreviewCachedCopy: loadFromOfficeJsPreviewCachedCopy,
@@ -379,11 +398,20 @@ registerRoute('post', '/custom-functions/run', async (req, res) => {
 
 registerRoute('post', '/custom-functions/parse-metadata', async (req, res) => {
   const strings = Strings(req);
-  const params: ICustomFunctionsMetadataRequestPostData = JSON.parse(req.body.data);
+  const params: ICustomFunctionsMetadataRequestPostData = JSON.parse(
+    req.body.data,
+  );
   const { snippets } = params;
-  const registrationInfo = getCustomFunctionsInfoForRegistration(snippets, strings);
+  const registrationInfo = getCustomFunctionsInfoForRegistration(
+    snippets,
+    strings,
+  );
 
-  return respondWith(res, JSON.stringify(registrationInfo), 'application/javascript');
+  return respondWith(
+    res,
+    JSON.stringify(registrationInfo),
+    'application/javascript',
+  );
 });
 
 registerRoute('get', '/open/:host/:type/:id/:filename', async (req, res) => {
@@ -503,7 +531,7 @@ registerRoute('post', '/export', (req, res) => {
       },
       true /*isExternalExport*/,
       strings,
-      isOfficeHost(snippet.host)
+      isOfficeHost(snippet.host),
     ),
     generateReadme(snippet),
     isOfficeHost(snippet.host)
@@ -532,34 +560,42 @@ registerRoute('post', '/export', (req, res) => {
   });
 });
 
-registerRoute('get', ['/try', '/try/:host', '/try/:host/:type/:id'], (req, res) => {
-  const params = massageParams<{ host: string; type: string; id: string }>(req);
-  if (!params.host) {
-    params.host = 'EXCEL';
-  }
+registerRoute(
+  'get',
+  ['/try', '/try/:host', '/try/:host/:type/:id'],
+  (req, res) => {
+    const params = massageParams<{ host: string; type: string; id: string }>(
+      req,
+    );
+    if (!params.host) {
+      params.host = 'EXCEL';
+    }
 
-  let editorTryItUrl = `${currentConfig.editorUrl}/?tryIt=true`;
-  if (req.query.wacUrl) {
-    editorTryItUrl += `&wacUrl=${decodeURIComponent(req.query.wacUrl)}`;
-  }
-  editorTryItUrl += `#/edit/${params.host}`;
+    let editorTryItUrl = `${currentConfig.editorUrl}/?tryIt=true`;
+    if (req.query.wacUrl) {
+      editorTryItUrl += `&wacUrl=${decodeURIComponent(req.query.wacUrl)}`;
+    }
+    editorTryItUrl += `#/edit/${params.host}`;
 
-  if (params.type && params.id) {
-    editorTryItUrl += `/${params.type}/${params.id}`;
-  }
+    if (params.type && params.id) {
+      editorTryItUrl += `/${params.type}/${params.id}`;
+    }
 
-  return loadTemplate<ITryItHandlebarsContext>('try-it').then(tryItGenerator => {
-    const html = tryItGenerator({
-      host: params.host,
-      pageTitle: Strings(req).tryItPageTitle,
-      initialLoadSubtitle: Strings(req).playgroundTagline,
-      editorTryItUrl: editorTryItUrl,
-      wacUrl: decodeURIComponent(req.query.wacUrl || ''),
-    });
+    return loadTemplate<ITryItHandlebarsContext>('try-it').then(
+      tryItGenerator => {
+        const html = tryItGenerator({
+          host: params.host,
+          pageTitle: Strings(req).tryItPageTitle,
+          initialLoadSubtitle: Strings(req).playgroundTagline,
+          editorTryItUrl: editorTryItUrl,
+          wacUrl: decodeURIComponent(req.query.wacUrl || ''),
+        });
 
-    return respondWith(res, html, 'text/html');
-  });
-});
+        return respondWith(res, html, 'text/html');
+      },
+    );
+  },
+);
 
 /** HTTP GET: Gets runner version info (useful for debugging, to match with the info in the Editor "about" view) */
 registerRoute('get', '/version', (req, res) => {
@@ -574,14 +610,14 @@ registerRoute('get', '/version', (req, res) => {
         samplesUrl: currentConfig.samplesUrl,
       },
       null,
-      4
-    )
+      4,
+    ),
   );
 });
 
 /** HTTP GET: Gets runner version info (useful for debugging, to match with the info in the Editor "about" view) */
 registerRoute('get', '/snippet/auth', async (req, res) =>
-  respondWith(res, (await loadTemplate('snippet-auth'))({}), 'text/html')
+  respondWith(res, (await loadTemplate('snippet-auth'))({}), 'text/html'),
 );
 
 registerRoute('get', '/lib/worker', async (req, res) => {
@@ -594,10 +630,14 @@ registerRoute('get', '/lib/worker', async (req, res) => {
 registerRoute('get', '/lib/sync-office-js', async (req, res) => {
   let syncOfficeJS = [
     fs
-      .readFileSync(path.resolve(__dirname, './maker/sync-office-js/Office.Runtime.js'))
+      .readFileSync(
+        path.resolve(__dirname, './maker/sync-office-js/Office.Runtime.js'),
+      )
       .toString(),
     fs
-      .readFileSync(path.resolve(__dirname, './maker/sync-office-js/office.core.js'))
+      .readFileSync(
+        path.resolve(__dirname, './maker/sync-office-js/office.core.js'),
+      )
       .toString(),
     fs
       .readFileSync(path.resolve(__dirname, './maker/sync-office-js/Excel.js'))
@@ -612,7 +652,7 @@ registerRoute('get', '/lib/sync-office-js', async (req, res) => {
 function compileSnippetCommon(
   req: express.Request,
   res: express.Response,
-  wrapWithRunnerChrome?: boolean
+  wrapWithRunnerChrome?: boolean,
 ) {
   const data: IRunnerState = JSON.parse(req.body.data);
   const { snippet, returnUrl, isInsideOfficeApp, refreshUrl } = data;
@@ -638,12 +678,15 @@ function compileSnippetCommon(
       snippetDataToCompile,
       false /*isExternalExport*/,
       strings,
-      isInsideOfficeApp
+      isInsideOfficeApp,
     ),
-    wrapWithRunnerChrome ? loadTemplate<IRunnerHandlebarsContext>('runner') : null,
+    wrapWithRunnerChrome
+      ? loadTemplate<IRunnerHandlebarsContext>('runner')
+      : null,
   ]).then(values => {
     const snippetHtmlData: { html: string; officeJS: string } = values[0];
-    const runnerHtmlGenerator: (context: IRunnerHandlebarsContext) => string = values[1];
+    const runnerHtmlGenerator: (context: IRunnerHandlebarsContext) => string =
+      values[1];
 
     let html = snippetHtmlData.html;
     const isMaker = isMakerScript(snippet.script);
@@ -668,7 +711,9 @@ function compileSnippetCommon(
         initialLoadSubtitle: strings.getLoadingSnippetSubtitle(snippet.name),
         headerTitle: snippet.name,
         strings,
-        explicitlySetDisplayLanguageOrNull: getExplicitlySetDisplayLanguageOrNull(req),
+        explicitlySetDisplayLanguageOrNull: getExplicitlySetDisplayLanguageOrNull(
+          req,
+        ),
       });
     }
 
@@ -689,7 +734,7 @@ function runCommon(
     explicitlySetDisplayLanguageOrNull: string;
   },
   strings: ServerStrings,
-  res: express.Response
+  res: express.Response,
 ) {
   let { host, id } = massageParams<{ host: string; id: string }>(options);
   id = id || '';
@@ -698,36 +743,51 @@ function runCommon(
 
   // NOTE: using Promise-based code instead of async/await
   // to avoid unhandled exception-pausing on debugging.
-  return loadTemplate<IRunnerHandlebarsContext>('runner').then(runnerHtmlGenerator => {
-    const html = runnerHtmlGenerator({
-      snippet: {
-        id: id,
-        isMakerScript: false,
-      },
-      officeJS: determineOfficeJS(options.query, host),
-      returnUrl: '',
-      host: host,
-      isTrustedSnippet: false /* Default to snippet not being trusted */,
-      initialLoadSubtitle: strings.playgroundTagline,
-      headerTitle: strings.scriptLabRunner,
-      strings,
-      explicitlySetDisplayLanguageOrNull: options.explicitlySetDisplayLanguageOrNull,
-    });
+  return loadTemplate<IRunnerHandlebarsContext>('runner').then(
+    runnerHtmlGenerator => {
+      const html = runnerHtmlGenerator({
+        snippet: {
+          id: id,
+          isMakerScript: false,
+        },
+        officeJS: determineOfficeJS(options.query, host),
+        returnUrl: '',
+        host: host,
+        isTrustedSnippet: false /* Default to snippet not being trusted */,
+        initialLoadSubtitle: strings.playgroundTagline,
+        headerTitle: strings.scriptLabRunner,
+        strings,
+        explicitlySetDisplayLanguageOrNull:
+          options.explicitlySetDisplayLanguageOrNull,
+      });
 
-    return respondWith(res, html, 'text/html');
-  });
+      return respondWith(res, html, 'text/html');
+    },
+  );
 
   /**
    * Helper function to return the OfficeJS URL (from query parameter,
    * or from guessing based on host), or empty string
    **/
-  function determineOfficeJS(query: { [key: string]: string }, host: string): string {
+  function determineOfficeJS(
+    query: { [key: string]: string },
+    host: string,
+  ): string {
     const queryParamsLowercase: { officejs: string } = <any>{};
-    forIn(query, (value, key) => (queryParamsLowercase[key.toLowerCase()] = value));
+    forIn(
+      query,
+      (value, key) => (queryParamsLowercase[key.toLowerCase()] = value),
+    );
 
-    if (queryParamsLowercase.officejs && queryParamsLowercase.officejs.trim() !== '') {
+    if (
+      queryParamsLowercase.officejs &&
+      queryParamsLowercase.officejs.trim() !== ''
+    ) {
       const candidateOfficeJs = queryParamsLowercase.officejs.trim();
-      if (isLocal && candidateOfficeJs.toLowerCase().indexOf('{localhost}') >= 0) {
+      if (
+        isLocal &&
+        candidateOfficeJs.toLowerCase().indexOf('{localhost}') >= 0
+      ) {
         return getDefaultHandlebarsContext().officeJsOrLocal;
       } else {
         return candidateOfficeJs;
@@ -748,7 +808,7 @@ function runCommon(
 function respondWith(
   res: express.Response,
   content: string,
-  type: 'text/html' | 'application/javascript'
+  type: 'text/html' | 'application/javascript',
 ) {
   res.setHeader('Cache-Control', 'no-cache, no-store');
   res.setHeader('X-XSS-Protection', '0');
@@ -785,12 +845,13 @@ function getVersionNumber(): Promise<string> {
           ai.trackEvent('[Snippet] Get version number succeeded', { body });
           return resolve(body);
         }
-      }
+      },
     );
   })
     .then(xml => parseXmlString(xml))
     .then(xmlJson => {
-      scriptLabVersionNumber = xmlJson['o:results']['o:wainfo'][0]['$']['o:ver'];
+      scriptLabVersionNumber =
+        xmlJson['o:results']['o:wainfo'][0]['$']['o:ver'];
       return scriptLabVersionNumber;
     })
     .catch(e => {
@@ -807,7 +868,7 @@ async function generateSnippetHtmlData(
   isExternalExport: boolean,
   strings: ServerStrings,
   isInsideOfficeApp: boolean,
-  extras: Partial<ISnippetHandlebarsContext> = {}
+  extras: Partial<ISnippetHandlebarsContext> = {},
 ): Promise<{ succeeded: boolean; html: string; officeJS: string }> {
   let script: string;
   try {
@@ -829,7 +890,7 @@ async function generateSnippetHtmlData(
   let { officeJS, linkReferences, scriptReferences } = processLibraries(
     compileData.libraries,
     isMakerScript(compileData.scriptToCompile),
-    isInsideOfficeApp
+    isInsideOfficeApp,
   );
 
   let shouldPutSnippetIntoOfficeInitialize;
@@ -876,18 +937,22 @@ async function generateSnippetHtmlData(
     isExternalExport,
     strings,
 
-    runtimeHelpersUrls: ['auth-helpers', 'maker'].map(item => getRuntimeHelpersUrl(item)),
+    runtimeHelpersUrls: ['auth-helpers', 'maker'].map(item =>
+      getRuntimeHelpersUrl(item),
+    ),
 
     editorUrl: currentConfig.editorUrl,
     runtimeHelperStringifiedStrings: JSON.stringify(
-      strings.RuntimeHelpers
+      strings.RuntimeHelpers,
     ) /* stringify so that it gets written correctly into "snippets" template */,
     shouldPutSnippetIntoOfficeInitialize,
 
     ...extras,
   };
 
-  const snippetHtmlGenerator = await loadTemplate<ISnippetHandlebarsContext>('snippet');
+  const snippetHtmlGenerator = await loadTemplate<ISnippetHandlebarsContext>(
+    'snippet',
+  );
   return {
     succeeded: true,
     html: snippetHtmlGenerator(snippetHandlebarsContext),
@@ -899,22 +964,27 @@ async function generateManifest(
   snippet: ISnippet,
   additionalFields: ISnippet,
   htmlFilename: string,
-  strings: ServerStrings
+  strings: ServerStrings,
 ): Promise<string> {
-  const manifestGenerator = await loadTemplate<IManifestHandlebarsContext>('manifest');
+  const manifestGenerator = await loadTemplate<IManifestHandlebarsContext>(
+    'manifest',
+  );
 
   const hostType = officeHostToManifestTypeMap[snippet.host];
   if (!hostType) {
     // OK to be English-only, internal error that should never happen.
     throw new BadRequestError(
-      `Cannot find matching Office host type for snippet host "${snippet.host}"`
+      `Cannot find matching Office host type for snippet host "${
+        snippet.host
+      }"`,
     );
   }
 
   const snippetNameMax125 =
     clipText(snippet.name, 125) || strings.manifestDefaults.nameIfEmpty;
   const snippetDescriptionMax250 =
-    clipText(snippet.description, 250) || strings.manifestDefaults.descriptionIfEmpty;
+    clipText(snippet.description, 250) ||
+    strings.manifestDefaults.descriptionIfEmpty;
 
   return manifestGenerator({
     name: snippetNameMax125,
@@ -933,7 +1003,9 @@ async function generateManifest(
 async function generateReadme(snippet: ISnippet): Promise<string> {
   // Keeping README as English-only, too many strings in that page to localize otherwise
 
-  const readmeGenerator = await loadTemplate<IReadmeHandlebarsContext>('readme');
+  const readmeGenerator = await loadTemplate<IReadmeHandlebarsContext>(
+    'readme',
+  );
   const isAddin = isOfficeHost(snippet.host);
 
   return readmeGenerator({
@@ -952,7 +1024,7 @@ async function generateReadme(snippet: ISnippet): Promise<string> {
 function registerRoute(
   verb: 'get' | 'post',
   path: string | string[],
-  action: (req: express.Request, res: express.Response) => Promise<any>
+  action: (req: express.Request, res: express.Response) => Promise<any>,
 ) {
   app[verb](path, async (req: express.Request, res: express.Response) => {
     try {
@@ -964,7 +1036,11 @@ function registerRoute(
   });
 }
 
-async function errorHandler(res: express.Response, error: Error, strings: ServerStrings) {
+async function errorHandler(
+  res: express.Response,
+  error: Error,
+  strings: ServerStrings,
+) {
   if (!(error instanceof InformationalError)) {
     ai.trackException(error, 'Server - Per-route handler');
   }
@@ -973,10 +1049,16 @@ async function errorHandler(res: express.Response, error: Error, strings: Server
   return respondWith(res, html, 'text/html');
 }
 
-async function generateErrorHtml(error: Error, strings: ServerStrings): Promise<string> {
-  const errorHtmlGenerator = await loadTemplate<IErrorHandlebarsContext>('error');
+async function generateErrorHtml(
+  error: Error,
+  strings: ServerStrings,
+): Promise<string> {
+  const errorHtmlGenerator = await loadTemplate<IErrorHandlebarsContext>(
+    'error',
+  );
 
-  const title = error instanceof InformationalError ? error.message : strings.error;
+  const title =
+    error instanceof InformationalError ? error.message : strings.error;
   let message;
   let expandDetailsByDefault: boolean;
   let details: string;
@@ -991,7 +1073,8 @@ async function generateErrorHtml(error: Error, strings: ServerStrings): Promise<
     }
 
     const hasDetails =
-      (error instanceof BadRequestError || error instanceof InformationalError) &&
+      (error instanceof BadRequestError ||
+        error instanceof InformationalError) &&
       error.details != null;
 
     if (hasDetails) {
@@ -1037,7 +1120,9 @@ function getDefaultHandlebarsContext(): IDefaultHandlebarsContext {
   return _defaultHandlebarsContext;
 
   function getFileAsJson(filename) {
-    return JSON.parse(fs.readFileSync(path.resolve(__dirname, filename)).toString());
+    return JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, filename)).toString(),
+    );
   }
 }
 
