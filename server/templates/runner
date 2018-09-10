@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{strings.runPageTitle}}</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{{origin}}}/libs/{{{versionedPackageNames_office_ui_fabric_js}}}/css/fabric.min.css" />
+    <link rel="stylesheet" href="{{{origin}}}/libs/{{{versionedPackageNames_office_ui_fabric_js}}}/css/fabric.components.min.css" />
+    <link rel="stylesheet" href="{{{origin}}}/{{{assets.polyfills.css}}}" />
+    <link rel="stylesheet" href="{{{origin}}}/{{{assets.runner.css}}}" />
+    <style>
+        /** On this particular page, adjust progress so that it keeps the header visible */
+        #progress {
+            top: 40px;
+            height: calc(100vh - 40px);
+            overflow: visible; /* allow environment ribbon to overflow upwards until header is displayed */
+        }
+        #ribbon {
+            top: -15px /* 25px in original, minus 40px for header */
+        }
+
+        /* Also, if an Office JS Helpers notification is invoked, move it down below the header */
+        .office-js-helpers-notification {
+            top: 40px !important;
+        }
+
+        iframe#FirebugUI {
+	        z-index: 1000 !important; /* so that can load *beneath* the progress splash-screen (z-index of 10,000) */
+        }
+        .runner-notification {
+        	z-index: 50000; /* make sure it shows up above everything, including the progress splash-screen */
+        }
+        .runner-overlay {
+            z-index: 40000;
+        }
+
+        #curtain {
+            background: rgba(0,0,0,0.6);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            z-index: 40000;
+        }
+        #curtain .spinner {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 40px auto;
+            width: 70px;
+            height: 20px;
+            text-align: center;
+        }
+        .spinner > div {
+            width: 18px;
+            height: 18px;
+            background-color: #fff;
+            border-radius: 100%;
+            display: inline-block;
+            -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+            animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+        }
+        .spinner .b1 {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+        }
+        .spinner .b2 {
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+        }
+        @-webkit-keyframes sk-bouncedelay {
+            0%, 80%, 100% {
+                -webkit-transform: scale(0);
+            }
+            40% {
+                -webkit-transform: scale(1);
+            }
+        }
+        @-webkit-keyframes sk-bouncedelay {
+            0%, 80%, 100% {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+            40% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+        @keyframes sk-bouncedelay {
+            0%, 80%, 100% {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+            40% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body class="ms-font-m">
+    <app id="progress" class="app">
+        <div class="ms-progress-component">
+            <div id="ribbon" class="ribbon"></div>
+            <main class="ms-progress-component__main">
+                <img class="ms-progress-component__logo" src="{{{origin}}}/assets/images/icon-large.svg">
+                <h1 id="title" class="ms-progress-component__title ms-font-xxl">Script Lab</h1>
+                <p id="subtitle" class="ms-progress-component__sub-title ms-font-m">{{initialLoadSubtitle}}</p>
+            </main>
+            <footer class="ms-progress-component__footer">
+                <div class="ms-progress">
+                    <div class="cs-loader">
+                        <div class="cs-loader-inner">
+                            <label>●</label>
+                            <label>●</label>
+                            <label>●</label>
+                            <label>●</label>
+                            <label>●</label>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div id="hosts" class="ms-u-slideUpIn20">
+				<!--Note: text below will get localized at runtime, and is hidden (but still taking up screen layout space) until then:-->
+				<p id="choose-your-host" style="visibility:hidden">Choose your host:</p>
+
+				<div class="buttons">
+					<div class="hostButton ms-Icon ms-Icon--Globe" data-host="WEB"></div>
+					<div class="hostButton ms-BrandIcon--Icon48 ms-BrandIcon--excel" data-host="EXCEL"></div>
+					<div class="hostButton ms-BrandIcon--Icon48 ms-BrandIcon--word" data-host="WORD"></div>
+					<div class="hostButton ms-BrandIcon--Icon48 ms-BrandIcon--powerpoint" data-host="POWERPOINT"></div>
+					<div class="hostButton ms-BrandIcon--Icon48 ms-BrandIcon--project" data-host="PROJECT"></div>
+					<div class="hostButton ms-BrandIcon--Icon48 ms-BrandIcon--outlook" data-host="OUTLOOK"></div>
+				</div>
+			</div>
+
+        </div>
+    </app>
+
+    <header id="header" class="command__bar" style="visibility:hidden">
+        <a id="header-back" style="display:none" class="command__icon ms-u-slideLeftIn10" href="{{{returnUrl}}}" title="{{strings.back}}">
+            <i class="ms-Icon ms-Icon--Back"></i>
+        </a>
+        <a id="header-refresh" class="command__icon command__center ms-u-slideLeftIn10" href="#">
+            <i class="ms-Icon ms-Icon--Refresh"></i>
+            <span id="header-text" class="ms-font-m ms-u-slideLeftIn10">{{headerTitle}}</span>
+        </a>
+        <!-- (tooltip (title attribute))-->
+        <div id="sync-with-editor" class="command__icon ms-u-slideLeftIn10" title="{{strings.switchToSnippet}}">
+            <i class="ms-Icon ms-Icon--Switch"></i>
+        </div>
+        <div id="padding-for-personality-menu" style="width: 0px"></div>
+    </header>
+
+    <div id="notify-current-snippet-changed" class="runner-notification ms-MessageBar ms-MessageBar--info" style="display:none">
+        <div class="ms-MessageBar-content">
+            <div class="ms-MessageBar-text">
+                {{strings.snippetCodeChanged}}
+            </div>
+
+            <div class="buttons" style="text-align: right;">
+                <button class="action-fast-reload ms-Button host-colored-button">
+                    <span class="ms-Button-label">{{strings.refresh}}</span>
+                </button>
+                <button class="action-dismiss ms-Button host-colored-button">
+                    <span class="ms-Button-label">{{strings.dismiss}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notify-another-snippet-selected" class="runner-notification ms-MessageBar ms-MessageBar--info" style="display:none">
+        <div class="ms-MessageBar-content">
+            <div class="ms-MessageBar-text">
+                {{strings.editingDifferentSnippet1}}: "<span class="snippet-name"></span>". {{strings.editingDifferentSnippet2}}.
+            </div>
+
+            <div class="buttons" style="text-align: right;">
+                <button class="action-fast-reload ms-Button host-colored-button">
+                    <span class="ms-Button-label">Refresh</span>
+                </button>
+                <button class="action-dismiss ms-Button host-colored-button">
+                    <span class="ms-Button-label">Dismiss</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notify-snippet-not-trusted" class="runner-notification ms-MessageBar ms-MessageBar--info ms-MessageBar--severeWarning" style="display:none">
+        <div class="ms-MessageBar-content">
+            <div class="ms-MessageBar-text">
+                {{strings.snippetNotTrusted}}
+            </div>
+
+            <div class="buttons" style="text-align: right;">
+                <button class="action-fast-reload ms-Button host-colored-button">
+                    <span class="ms-Button-label">{{strings.trust}}</span>
+                </button>
+                <button class="action-dismiss ms-Button host-colored-button">
+                    <span class="ms-Button-label">{{strings.cancel}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notify-error" class="runner-notification ms-MessageBar ms-MessageBar--error" style="display:none">
+        <div class="ms-MessageBar-content">
+            <div class="ms-MessageBar-text">
+                <!-- Error text will dynamically go here -->
+            </div>
+
+            <div class="buttons" style="text-align: right;">
+                <button class="action-back ms-Button host-colored-button">
+                    <span class="ms-Button-label">{{strings.back}}</span>
+                </button>
+                <button class="action-fast-reload ms-Button host-colored-button">
+                    <span class="ms-Button-label">{{strings.loadLatestSnippet}}</span>
+                </button>
+                <button class="action-dismiss ms-Button host-colored-button">
+                    <span class="ms-Button-label">{{strings.dismiss}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="runner-overlay"></div>
+
+    <div id="curtain" style="display:none">
+        <div class="spinner">
+            <div class="b1"></div>
+            <div class="b2"></div>
+            <div class="b3"></div>
+        </div>
+    </div>
+
+    {{!-- Keep this as a placeholder even if not loading any initial content --}}
+    <pre id="snippet-code-content" style="display:none">
+        {{#if snippet.content}}
+        {{snippet.content}}
+        {{/if}}
+    </pre>
+
+    {{!-- A hidden but taking-up-space div to serve in place of the snippet         --}}
+    {{!-- (That way, Firebug doesn't take up the entirety of the screen initially). --}}
+    {{!-- It will get replaced when the real snippet frame loads                    --}}
+    <div class="snippet-frame" style="visibility:hidden">
+    </div>
+
+    {{!-- A flexbox div whose sole purpose in to act as a flexbox size-alike to the --}}
+    {{!-- "position:absolute" FirebugUI element                                     --}}
+    <div id="firebug-shadow"></div>
+
+    <script src="{{{origin}}}/{{{assets.polyfills.js}}}"></script>
+    <script src="{{{origin}}}/{{{assets.vendor.js}}}"></script>
+    <script src="{{{origin}}}/{{{assets.runner.js}}}"></script>
+
+    <script type="text/javascript">
+        window.initializeRunner({
+            host: '{{{host}}}',
+            origin: '{{{origin}}}',
+            returnUrl: '{{{returnUrl}}}',
+            refreshUrl: '{{{refreshUrl}}}',
+            isTrustedSnippet: {{{isTrustedSnippet}}},
+            currentSnippet: {
+                {{#if snippet.lastModified}}
+                lastModified: {{snippet.lastModified}},
+                {{/if}}
+                id: '{{{snippet.id}}}',
+                officeJS: '{{{officeJS}}}',
+                isMakerScript: {{{snippet.isMakerScript}}}
+            },
+            explicitlySetDisplayLanguageOrNull: '{{{explicitlySetDisplayLanguageOrNull}}}'
+        });
+    </script>
+</body>
+
+</html>
