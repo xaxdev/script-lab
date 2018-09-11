@@ -2,6 +2,7 @@ import { configure, addDecorator } from '@storybook/react'
 import { configureActions } from '@storybook/addon-actions'
 import { checkA11y } from '@storybook/addon-a11y'
 import { withKnobs } from '@storybook/addon-knobs'
+import { setOptions } from '@storybook/addon-options'
 
 import { ThemeProvider } from 'styled-components'
 import React from 'react'
@@ -9,6 +10,11 @@ import React from 'react'
 import '../src/index.css'
 import { getTheme, setupFabricTheme } from '../src/theme'
 import { initializeIcons } from 'office-ui-fabric-react/lib-commonjs/Icons'
+
+setOptions({
+  hierarchySeparator: /\//,
+  hierarchyRootSeparator: /\|/,
+})
 
 configureActions({
   depth: 100,
