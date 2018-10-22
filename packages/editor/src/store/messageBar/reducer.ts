@@ -59,18 +59,10 @@ const messageBarReducer = (
         },
       }
 
-    case getType(solutions.remove):
-      return {
-        isVisible: true,
-        style: MessageBarType.info,
-        text: `The snippet '${action.payload.name}' has been deleted.`,
-        link: null,
-      }
-
     case getType(settings.edit.success):
       return {
-        isVisible: true,
-        style: MessageBarType.info,
+        isVisible: action.payload.showMessageBar,
+        style: MessageBarType.success,
         text: 'Settings successfully applied.',
         link: null,
       }
@@ -79,7 +71,7 @@ const messageBarReducer = (
       return {
         isVisible: true,
         style: MessageBarType.error,
-        text: `Error in settings. ${action.payload}`,
+        text: `Settings ${action.payload}`,
         link: null,
       }
 

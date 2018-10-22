@@ -5,20 +5,24 @@ import { Customizer } from 'office-ui-fabric-react/lib/Utilities'
 import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar'
 import { PersonaSize, PersonaCoin } from 'office-ui-fabric-react/lib/Persona'
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar'
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner'
 
 import Clipboard from 'clipboard'
 import { convertSolutionToSnippet } from '../../../utils'
 import YAML from 'js-yaml'
 
+import DeleteConfirmationDialog from './DeleteConfirmationDialog'
 import SolutionSettings from './SolutionSettings'
+
 import { ITheme as IFabricTheme } from 'office-ui-fabric-react/lib/Styling'
-import { NULL_SOLUTION_ID, SETTINGS_SOLUTION_ID, PATHS } from '../../../constants'
+import { NULL_SOLUTION_ID, PATHS, IS_TASK_PANE_WIDTH } from '../../../constants'
+import { getPlatform, PlatformType } from '../../../environment'
 
 import { connect } from 'react-redux'
 import actions from '../../../store/actions'
 import selectors from '../../../store/selectors'
 
-import { getHeaderFabricTheme } from '../../../theme'
+import { getCommandBarFabricTheme } from '../../../theme'
 import { push } from 'connected-react-router'
 
 const HeaderWrapper = styled.header`
@@ -27,21 +31,25 @@ const HeaderWrapper = styled.header`
 `
 
 interface IPropsFromRedux {
-  profilePicUrl?: string
+  profilePicUrl: string | null
   isRunnableOnThisHost: boolean
   isSettingsView: boolean
   isCustomFunctionsView: boolean
   isLoggedIn: boolean
-  headerFabricTheme: IFabricTheme
+  isLoggingInOrOut: boolean
+  commandBarFabricTheme: IFabricTheme
+  screenWidth: number
 }
 
 const mapStateToProps = (state): IPropsFromRedux => ({
   isSettingsView: selectors.settings.getIsOpen(state),
   isCustomFunctionsView: selectors.customFunctions.getIsCurrentSolutionCF(state),
   isLoggedIn: !!selectors.github.getToken(state),
+  isLoggingInOrOut: selectors.github.getIsLoggingInOrOut(state),
   isRunnableOnThisHost: selectors.host.getIsRunnableOnThisHost(state),
   profilePicUrl: selectors.github.getProfilePicUrl(state),
-  headerFabricTheme: getHeaderFabricTheme(selectors.host.get(state)),
+  commandBarFabricTheme: getCommandBarFabricTheme(selectors.host.get(state)),
+  screenWidth: selectors.screen.getWidth(state),
 })
 
 interface IActionsFromRedux {
@@ -69,7 +77,7 @@ interface IActionsFromRedux {
 
 const mapDispatchToProps = (dispatch, ownProps: IProps): IActionsFromRedux => ({
   login: () => dispatch(actions.github.login.request()),
-  logout: () => dispatch(actions.github.logout()),
+  logout: () => dispatch(actions.github.logout.request()),
 
   showBackstage: () => dispatch(push(PATHS.BACKSTAGE)),
   closeSettings: () => dispatch(actions.settings.close()),
@@ -109,10 +117,11 @@ export interface IProps extends IPropsFromRedux, IActionsFromRedux {
 
 interface IState {
   showSolutionSettings: boolean
+  isDeleteConfirmationDialogVisible: boolean
 }
 
 class HeaderWithoutTheme extends React.Component<IProps, IState> {
-  state = { showSolutionSettings: false }
+  state = { showSolutionSettings: false, isDeleteConfirmationDialogVisible: false }
   clipboard
 
   constructor(props: IProps) {
@@ -123,6 +132,16 @@ class HeaderWithoutTheme extends React.Component<IProps, IState> {
   }
 
   getSnippetYaml = (): string => YAML.dump(convertSolutionToSnippet(this.props.solution))
+
+  openDeleteConfirmationDialog = () =>
+    this.setState({ isDeleteConfirmationDialogVisible: true })
+  closeDeleteConfirmationDialog = () =>
+    this.setState({ isDeleteConfirmationDialogVisible: false })
+
+  onConfirmDelete = () => {
+    this.closeDeleteConfirmationDialog()
+    this.props.deleteSolution()
+  }
 
   render() {
     const {
@@ -135,8 +154,10 @@ class HeaderWithoutTheme extends React.Component<IProps, IState> {
       profilePicUrl,
       isRunnableOnThisHost,
       isLoggedIn,
+      isLoggingInOrOut,
+      screenWidth,
       theme,
-      headerFabricTheme,
+      commandBarFabricTheme,
       logout,
       login,
       closeSettings,
@@ -202,6 +223,13 @@ class HeaderWithoutTheme extends React.Component<IProps, IState> {
       },
       {
         hidden: isNullSolution,
+        key: 'delete',
+        text: 'Delete',
+        iconProps: { iconName: 'Delete' },
+        onClick: this.openDeleteConfirmationDialog,
+      },
+      {
+        hidden: isNullSolution,
         key: 'share',
         text: 'Share',
         iconProps: { iconName: 'Share' },
@@ -209,18 +237,11 @@ class HeaderWithoutTheme extends React.Component<IProps, IState> {
           items: shareOptions,
         },
       },
-      {
-        hidden: isNullSolution,
-        key: 'delete',
-        text: 'Delete',
-        iconProps: { iconName: 'Delete' },
-        onClick: deleteSolution,
-      },
     ]
       .filter(({ hidden }) => !hidden)
       .map(option => {
         const { hidden, ...rest } = option
-        return rest
+        return { ...rest, iconOnly: screenWidth < IS_TASK_PANE_WIDTH }
       })
 
     const name = {
@@ -228,6 +249,15 @@ class HeaderWithoutTheme extends React.Component<IProps, IState> {
       key: 'solution-name',
       text: solutionName,
       onClick: isSettingsView ? undefined : this.openSolutionSettings,
+      style: { paddingRight: '3rem' },
+      iconProps: {},
+      iconOnly: false,
+    }
+
+    if (screenWidth < IS_TASK_PANE_WIDTH) {
+      name.style.paddingRight = '0'
+      name.iconProps = { iconName: 'OfficeAddinsLogo' }
+      name.iconOnly = true
     }
 
     const nav = {
@@ -262,16 +292,20 @@ class HeaderWithoutTheme extends React.Component<IProps, IState> {
       key: 'account',
       onRenderIcon: () => (
         <div style={{ width: '28px', overflow: 'hidden' }}>
-          <PersonaCoin
-            imageUrl={profilePicUrl}
-            size={PersonaSize.size28}
-            initialsColor="white"
-            styles={{
-              initials: {
-                color: (theme && theme.primary) || 'black',
-              },
-            }}
-          />
+          {isLoggingInOrOut ? (
+            <Spinner size={SpinnerSize.medium} />
+          ) : (
+            <PersonaCoin
+              imageUrl={profilePicUrl || undefined}
+              size={PersonaSize.size28}
+              initialsColor="white"
+              styles={{
+                initials: {
+                  color: (theme && theme.primary) || 'black',
+                },
+              }}
+            />
+          )}
         </div>
       ),
       ariaLabel: isLoggedIn ? 'Logout' : 'Login',
@@ -287,31 +321,44 @@ class HeaderWithoutTheme extends React.Component<IProps, IState> {
           }
         : undefined,
       iconOnly: true,
-      onClick: login,
+      onClick: isLoggingInOrOut ? () => {} : login,
     }
 
     return (
       <>
-        <Customizer settings={{ theme: headerFabricTheme }}>
+        <Customizer settings={{ theme: commandBarFabricTheme }}>
           <HeaderWrapper>
             <CommandBar
               items={items}
               styles={{
-                root: { paddingLeft: 0, paddingRight: 0 },
+                root: {
+                  paddingLeft: 0,
+                  paddingRight: {
+                    [PlatformType.PC]: '20px',
+                    [PlatformType.Mac]: '40px',
+                    [PlatformType.OfficeOnline]: '0px',
+                  }[getPlatform()],
+                },
               }}
               farItems={[profilePic]}
+              ariaLabel={'Use left and right arrow keys to navigate between commands'}
             />
           </HeaderWrapper>
         </Customizer>
 
-        {solution && (
-          <SolutionSettings
-            isOpen={this.state.showSolutionSettings}
-            closeSolutionSettings={this.closeSolutionSettings}
-            solution={solution}
-            editSolutionMetadata={editSolution}
-          />
-        )}
+        <SolutionSettings
+          isOpen={this.state.showSolutionSettings}
+          closeSolutionSettings={this.closeSolutionSettings}
+          solution={solution}
+          editSolutionMetadata={editSolution}
+        />
+
+        <DeleteConfirmationDialog
+          isVisible={this.state.isDeleteConfirmationDialogVisible}
+          solutionName={solution.name}
+          onYes={this.onConfirmDelete}
+          onCancel={this.closeDeleteConfirmationDialog}
+        />
       </>
     )
   }

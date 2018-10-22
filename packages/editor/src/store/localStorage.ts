@@ -7,9 +7,12 @@ import {
   NULL_SOLUTION_ID,
   localStorageKeys,
 } from '../constants'
-import { getSettingsSolutionAndFiles, defaultSettings } from '../defaultSettings'
+import {
+  getSettingsSolutionAndFiles,
+  defaultSettings,
+  allowedSettings,
+} from '../settings'
 import { merge } from './settings/sagas'
-import { allowedSettings } from '../SettingsJSONSchema'
 
 const getCFPostData = (state: IState): IRunnerCustomFunctionsPostData => {
   const cfSolutions = selectors.customFunctions.getSolutions(state)
@@ -44,9 +47,11 @@ const getCFPostData = (state: IState): IRunnerCustomFunctionsPostData => {
 export const saveState = (state: IState) => {
   try {
     const { solutions, github, settings } = state
+    const { profilePicUrl, token } = github
+
+    const serializedGithub = JSON.stringify({ profilePicUrl, token })
     const serializedSolutions = JSON.stringify(solutions.metadata)
     const serializedFiles = JSON.stringify(solutions.files)
-    const serializedGithub = JSON.stringify(github)
     const serializedValidSettings = JSON.stringify(settings.values)
 
     localStorage.setItem('solutions', serializedSolutions)
@@ -85,6 +90,9 @@ export const saveState = (state: IState) => {
 
 export const loadState = (): Partial<IState> => {
   try {
+    // In order to fix the IE cross-tab issue (#147)
+    localStorage.setItem('playground_dummy_key', 'null')
+
     let solutions = JSON.parse(localStorage.getItem('solutions') || '{}')
     let files = JSON.parse(localStorage.getItem('files') || '{}')
     let settings = JSON.parse(localStorage.getItem('validSettings') || 'null')
@@ -134,6 +142,9 @@ export const loadState = (): Partial<IState> => {
 
 // custom functions
 export const getIsCustomFunctionRunnerAlive = (): boolean => {
+  // In order to fix the IE cross-tab issue (#147)
+  localStorage.setItem('playground_dummy_key', 'null')
+
   const lastHeartbeat = localStorage.getItem(
     localStorageKeys.customFunctionsLastHeartbeatTimestamp,
   )
@@ -141,6 +152,9 @@ export const getIsCustomFunctionRunnerAlive = (): boolean => {
 }
 
 export const getCustomFunctionRunnerLastUpdated = (): number => {
+  // In order to fix the IE cross-tab issue (#147)
+  localStorage.setItem('playground_dummy_key', 'null')
+
   const lastUpdated = localStorage.getItem(
     localStorageKeys.customFunctionsLastUpdatedCodeTimestamp,
   )
@@ -148,6 +162,9 @@ export const getCustomFunctionRunnerLastUpdated = (): number => {
 }
 
 export const getCustomFunctionLogs = (): ILogData[] | null => {
+  // In order to fix the IE cross-tab issue (#147)
+  localStorage.setItem('playground_dummy_key', 'null')
+
   const logsString = localStorage.getItem(localStorageKeys.log)
 
   if (logsString !== null) {
