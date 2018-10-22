@@ -1,5 +1,4 @@
 import React from 'react'
-import monaco from 'monaco-editor'
 
 export interface IProps {
   path: string
@@ -12,11 +11,16 @@ export interface IProps {
 
 export class Monaco extends React.Component<IProps> {
   editor
-  node
+  container
   changeSubscription
 
+  constructor(props) {
+    super(props)
+    this.container = React.createRef()
+  }
+
   initializeMonaco() {
-    const { path, value, language, ...options } = this.props
+    const { path, value, language, options } = this.props
     const model = monaco.editor.createModel(
       value,
       language,
@@ -25,7 +29,7 @@ export class Monaco extends React.Component<IProps> {
         path,
       }),
     )
-    this.editor = monaco.editor.create(this.node, options)
+    this.editor = monaco.editor.create(this.container.current, options)
     this.editor.setModel(model)
 
     this.changeSubscription = model.onDidChangeContent(() => {
@@ -47,7 +51,7 @@ export class Monaco extends React.Component<IProps> {
   }
 
   componentDidUpdate(prevProps: IProps) {
-    const { path, value, language, onValueChange, ...options } = this.props
+    const { path, value, language, options } = this.props
 
     this.editor.updateOptions(options)
 
@@ -77,7 +81,7 @@ export class Monaco extends React.Component<IProps> {
   }
 
   render() {
-    return <div ref={c => (this.node = c)} />
+    return <div ref={this.container} />
   }
 }
 

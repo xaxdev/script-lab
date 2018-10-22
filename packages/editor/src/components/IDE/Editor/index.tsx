@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar'
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button'
 
-import Monaco from './Monaco'
+import Monaco from './Monaco/Monaco'
 import Only from '../../Only'
 
 import SettingsNotAppliedDialog from './SettingsNotAppliedDialog'
@@ -320,6 +320,8 @@ class Editor extends Component<IProps, IState> {
     return false
   }
 
+  testFunc = (value: string) => console.log(value)
+
   render() {
     const {
       activeFiles,
@@ -365,12 +367,18 @@ class Editor extends Component<IProps, IState> {
 
         <Layout style={{ backgroundColor }}>
           <Monaco
-            theme={monacoTheme}
-            options={options}
-            tabSize={editorSettings.tabSize}
-            isPrettierEnabled={editorSettings.isPrettierEnabled}
-            editorDidMount={this.setupEditor}
-            libraries={libraries && libraries.content}
+            value={this.props.activeFile.content}
+            path={`${this.props.activeSolution.id}/${this.props.activeFile.id}`}
+            language={this.props.activeFile.language}
+            options={{ theme: monacoTheme }}
+            onValueChange={this.testFunc}
+
+            // theme={monacoTheme}
+            // options={options}
+            // tabSize={editorSettings.tabSize}
+            // isPrettierEnabled={editorSettings.isPrettierEnabled}
+            // editorDidMount={this.setupEditor}
+            // libraries={libraries && libraries.content}
           />
         </Layout>
       </>
