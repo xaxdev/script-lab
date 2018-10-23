@@ -1,11 +1,13 @@
 import React from 'react'
+import debounce from 'lodash/debounce'
 
 export interface IProps {
   path: string
-  value: string
   language: string
+  value: string
   options: Partial<monaco.editor.IEditorConstructionOptions>
 
+  editorDidMount: (editor, monaco) => void
   onValueChange: (value: string) => void
 }
 
@@ -32,9 +34,13 @@ export class Monaco extends React.Component<IProps> {
     this.editor = monaco.editor.create(this.container.current, options)
     this.editor.setModel(model)
 
-    this.changeSubscription = model.onDidChangeContent(() => {
-      this.props.onValueChange(model.getValue())
-    })
+    this.changeSubscription = model.onDidChangeContent(
+      debounce(() => {
+        this.props.onValueChange(model.getValue())
+      }, 250),
+    )
+
+    this.props.editorDidMount(this.editor, monaco)
   }
 
   componentDidMount() {
@@ -51,22 +57,24 @@ export class Monaco extends React.Component<IProps> {
   }
 
   componentDidUpdate(prevProps: IProps) {
-    const { path, value, language, options } = this.props
+    if (this.editor) {
+      const { path, value, language, options } = this.props
 
-    this.editor.updateOptions(options)
+      this.editor.updateOptions(options)
 
-    const model = this.editor.getModel()
+      const model = this.editor.getModel()
 
-    if (value !== model.getValue()) {
-      model.pushEditOperations(
-        [],
-        [
-          {
-            range: model.getFullModelRange(),
-            text: value,
-          },
-        ],
-      )
+      if (value !== model.getValue()) {
+        model.pushEditOperations(
+          [],
+          [
+            {
+              range: model.getFullModelRange(),
+              text: value,
+            },
+          ],
+        )
+      }
     }
   }
 
@@ -81,7 +89,9 @@ export class Monaco extends React.Component<IProps> {
   }
 
   render() {
-    return <div ref={this.container} />
+    return (
+      <div ref={this.container} style={{ width: '100%', height: '100%' }} role="main" />
+    )
   }
 }
 
