@@ -16,7 +16,7 @@ export const Wrapper = styled.article.attrs({ className: 'ms-font-m' })`
   }
 `
 
-export const ActiveWrapper = Wrapper.extend`
+export const ActiveWrapper = styled(Wrapper)`
   background-color: ${props => props.theme.primaryDarker};
   color: ${props => props.theme.white};
 `
