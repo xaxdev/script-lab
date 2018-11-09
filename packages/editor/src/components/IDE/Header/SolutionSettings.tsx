@@ -113,10 +113,10 @@ class SolutionSettings extends React.Component<ISolutionSettings, IState> {
   ) => this.setState({ description: newValue! })
 
   private updateSolutionNoCustomUI = (
-    event: React.FormEvent<HTMLElement>,
-    isChecked: boolean,
+    ev?: React.FormEvent<HTMLElement | HTMLInputElement> | undefined,
+    checked?: boolean | undefined,
   ) => {
-    if (isChecked) {
+    if (checked) {
       this.setState({ isDirectScriptExecutionSolution: true })
     } else {
       this.setState({ isDirectScriptExecutionSolution: undefined })

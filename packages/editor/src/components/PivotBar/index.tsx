@@ -84,10 +84,15 @@ class PivotBar extends React.Component<IProps> {
     )
   }
 
-  onLinkClick = (item: PivotItem): void => {
-    const key = item.props.itemKey
-    if (key && key !== this.props.selectedKey) {
-      this.props.onSelect(key)
+  onLinkClick = (
+    item?: PivotItem | undefined,
+    ev?: React.MouseEvent<HTMLElement> | undefined,
+  ): void => {
+    if (item) {
+      const key = item.props.itemKey
+      if (key && key !== this.props.selectedKey) {
+        this.props.onSelect(key)
+      }
     }
   }
 }

@@ -156,8 +156,6 @@ exports[`Storyshots Backstage|All basic 1`] = `
       >
         <div>
           <div
-            aria-describedby={undefined}
-            aria-labelledby={undefined}
             className="ms-FocusZone"
             data-focuszone-id="FocusZone21"
             onFocus={[Function]}
@@ -190,11 +188,6 @@ exports[`Storyshots Backstage|All basic 1`] = `
               role="tablist"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -313,9 +306,7 @@ exports[`Storyshots Backstage|All basic 1`] = `
                       color: #1d1d1d;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 id="Pivot20-Tab0"
-                name={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
@@ -374,11 +365,6 @@ exports[`Storyshots Backstage|All basic 1`] = `
                 </div>
               </button>
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -497,9 +483,7 @@ exports[`Storyshots Backstage|All basic 1`] = `
                       color: #1d1d1d;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 id="Pivot20-Tab1"
-                name={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
@@ -558,11 +542,6 @@ exports[`Storyshots Backstage|All basic 1`] = `
                 </div>
               </button>
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={true}
                 className=
                     ms-Button
@@ -688,7 +667,6 @@ exports[`Storyshots Backstage|All basic 1`] = `
                       color: #fff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 id="Pivot20-Tab2"
                 name="My Snippets"
                 onClick={[Function]}
@@ -734,11 +712,6 @@ exports[`Storyshots Backstage|All basic 1`] = `
                 </div>
               </button>
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -857,7 +830,6 @@ exports[`Storyshots Backstage|All basic 1`] = `
                       color: #1d1d1d;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 id="Pivot20-Tab3"
                 name="Samples"
                 onClick={[Function]}
@@ -903,11 +875,6 @@ exports[`Storyshots Backstage|All basic 1`] = `
                 </div>
               </button>
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -1026,7 +993,6 @@ exports[`Storyshots Backstage|All basic 1`] = `
                       color: #1d1d1d;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 id="Pivot20-Tab4"
                 name="Import"
                 onClick={[Function]}
@@ -1216,7 +1182,6 @@ exports[`Storyshots Backstage|All basic 1`] = `
                 &:-ms-input-placeholder {
                   color: #858585;
                 }
-            disabled={undefined}
             id="SearchBox37"
             onChange={[Function]}
             onInput={[Function]}
@@ -1229,8 +1194,6 @@ exports[`Storyshots Backstage|All basic 1`] = `
           className="c7"
         >
           <div
-            aria-describedby={undefined}
-            aria-labelledby={undefined}
             className="ms-FocusZone"
             data-focuszone-id="FocusZone38"
             onFocus={[Function]}
@@ -1437,8 +1400,6 @@ exports[`Storyshots Backstage|All basic 1`] = `
           className="c7"
         >
           <div
-            aria-describedby={undefined}
-            aria-labelledby={undefined}
             className="ms-FocusZone"
             data-focuszone-id="FocusZone39"
             onFocus={[Function]}
@@ -1621,8 +1582,6 @@ exports[`Storyshots Backstage|GalleryList basic 1`] = `
   className="c0"
 >
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone40"
     onFocus={[Function]}
@@ -1666,7 +1625,6 @@ exports[`Storyshots Backstage|GalleryList basic 1`] = `
     <article
       className="ms-font-m c4"
       data-is-focusable="true"
-      onClick={undefined}
     >
       <div
         className=""
@@ -1682,7 +1640,6 @@ exports[`Storyshots Backstage|GalleryList basic 1`] = `
     <article
       className="ms-font-m c4"
       data-is-focusable="true"
-      onClick={undefined}
     >
       <div
         className=""
@@ -1698,7 +1655,6 @@ exports[`Storyshots Backstage|GalleryList basic 1`] = `
     <article
       className="ms-font-m c4"
       data-is-focusable="true"
-      onClick={undefined}
     >
       <div
         className=""
@@ -1714,7 +1670,6 @@ exports[`Storyshots Backstage|GalleryList basic 1`] = `
     <article
       className="ms-font-m c4"
       data-is-focusable="true"
-      onClick={undefined}
     >
       <div
         className=""
@@ -1730,7 +1685,6 @@ exports[`Storyshots Backstage|GalleryList basic 1`] = `
     <article
       className="ms-font-m c4"
       data-is-focusable="true"
-      onClick={undefined}
     >
       <div
         className=""
@@ -1818,8 +1772,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
     className="c0"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone42"
       onFocus={[Function]}
@@ -1863,7 +1815,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -1879,7 +1830,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -1895,7 +1845,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -1911,7 +1860,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -1927,7 +1875,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -1946,8 +1893,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
     className="c0"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone43"
       onFocus={[Function]}
@@ -1991,7 +1936,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2007,7 +1951,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2023,7 +1966,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2039,7 +1981,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2055,7 +1996,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2074,8 +2014,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
     className="c0"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone44"
       onFocus={[Function]}
@@ -2119,7 +2057,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2135,7 +2072,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2151,7 +2087,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2167,7 +2102,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2183,7 +2117,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2202,8 +2135,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
     className="c0"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone45"
       onFocus={[Function]}
@@ -2247,7 +2178,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2263,7 +2193,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2279,7 +2208,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2295,7 +2223,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2311,7 +2238,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2330,8 +2256,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
     className="c0"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone46"
       onFocus={[Function]}
@@ -2375,7 +2299,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2391,7 +2314,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2407,7 +2329,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2423,7 +2344,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2439,7 +2359,6 @@ exports[`Storyshots Backstage|GalleryList multiple 1`] = `
       <article
         className="ms-font-m c4"
         data-is-focusable="true"
-        onClick={undefined}
       >
         <div
           className=""
@@ -2548,8 +2467,6 @@ exports[`Storyshots Backstage|GalleryList with an active 1`] = `
   className="c0"
 >
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone41"
     onFocus={[Function]}
@@ -2593,7 +2510,6 @@ exports[`Storyshots Backstage|GalleryList with an active 1`] = `
     <article
       className="ms-font-m c4"
       data-is-focusable="true"
-      onClick={undefined}
     >
       <div
         className=""
@@ -2609,7 +2525,6 @@ exports[`Storyshots Backstage|GalleryList with an active 1`] = `
     <article
       className="ms-font-m c4"
       data-is-focusable="true"
-      onClick={undefined}
     >
       <div
         className=""
@@ -2625,7 +2540,6 @@ exports[`Storyshots Backstage|GalleryList with an active 1`] = `
     <article
       className="ms-font-m c6"
       data-is-focusable="true"
-      onClick={undefined}
     >
       <div
         className=""
@@ -2671,7 +2585,6 @@ exports[`Storyshots Backstage|GalleryList/Item active 1`] = `
 <article
   className="ms-font-m c0"
   data-is-focusable="true"
-  onClick={undefined}
 >
   <div
     className=""
@@ -2713,7 +2626,6 @@ exports[`Storyshots Backstage|GalleryList/Item basic 1`] = `
 <article
   className="ms-font-m c0"
   data-is-focusable="true"
-  onClick={undefined}
 >
   <div
     className=""
@@ -2821,9 +2733,7 @@ exports[`Storyshots Backstage|ImportSolution basic 1`] = `
             }
       >
         <textarea
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -2871,7 +2781,6 @@ exports[`Storyshots Backstage|ImportSolution basic 1`] = `
           onFocus={[Function]}
           onInput={[Function]}
           placeholder="e.g.: https://gist.github.com/sampleGistId"
-          readOnly={undefined}
           rows={8}
           value=""
         />
@@ -2879,11 +2788,6 @@ exports[`Storyshots Backstage|ImportSolution basic 1`] = `
     </div>
   </div>
   <button
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--primary
@@ -2963,7 +2867,6 @@ exports[`Storyshots Backstage|ImportSolution basic 1`] = `
           color: Window;
         }
     data-is-focusable={true}
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}
@@ -3019,8 +2922,6 @@ exports[`Storyshots Backstage|ImportSolution basic 1`] = `
 
 exports[`Storyshots Backstage|Menu basic 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-labelledby={undefined}
   className="ms-FocusZone"
   data-focuszone-id="FocusZone52"
   onFocus={[Function]}
@@ -3029,7 +2930,6 @@ exports[`Storyshots Backstage|Menu basic 1`] = `
   role="presentation"
 >
   <nav
-    aria-label={undefined}
     className=
         ms-Nav
         {
@@ -3096,11 +2996,6 @@ exports[`Storyshots Backstage|Menu basic 1`] = `
               name=""
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--action
@@ -3184,14 +3079,12 @@ exports[`Storyshots Backstage|Menu basic 1`] = `
                       color: #333;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
-                rel={undefined}
                 title=""
                 type="button"
               >
@@ -3279,10 +3172,6 @@ exports[`Storyshots Backstage|Menu basic 1`] = `
             >
               <button
                 aria-describedby="id__58"
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--action
@@ -3366,14 +3255,12 @@ exports[`Storyshots Backstage|Menu basic 1`] = `
                       color: #333;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
-                rel={undefined}
                 title="New Snippet"
                 type="button"
               >
@@ -3484,10 +3371,6 @@ exports[`Storyshots Backstage|Menu basic 1`] = `
             >
               <button
                 aria-describedby="id__61"
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--action
@@ -3580,14 +3463,12 @@ exports[`Storyshots Backstage|Menu basic 1`] = `
                       top: 0px;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
-                rel={undefined}
                 title="My Snippets"
                 type="button"
               >
@@ -3697,10 +3578,6 @@ exports[`Storyshots Backstage|Menu basic 1`] = `
             >
               <button
                 aria-describedby="id__64"
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--action
@@ -3784,14 +3661,12 @@ exports[`Storyshots Backstage|Menu basic 1`] = `
                       color: #333;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
-                rel={undefined}
                 title="Samples"
                 type="button"
               >
@@ -3901,10 +3776,6 @@ exports[`Storyshots Backstage|Menu basic 1`] = `
             >
               <button
                 aria-describedby="id__67"
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--action
@@ -3988,14 +3859,12 @@ exports[`Storyshots Backstage|Menu basic 1`] = `
                       color: #333;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
-                rel={undefined}
                 title="Import"
                 type="button"
               >
@@ -4301,7 +4170,6 @@ exports[`Storyshots Backstage|MySolutions basic 1`] = `
           &:-ms-input-placeholder {
             color: #858585;
           }
-      disabled={undefined}
       id="SearchBox1"
       onChange={[Function]}
       onInput={[Function]}
@@ -4314,8 +4182,6 @@ exports[`Storyshots Backstage|MySolutions basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone2"
       onFocus={[Function]}
@@ -4522,8 +4388,6 @@ exports[`Storyshots Backstage|MySolutions basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone3"
       onFocus={[Function]}
@@ -4733,8 +4597,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone4"
       onFocus={[Function]}
@@ -4829,8 +4691,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone5"
       onFocus={[Function]}
@@ -4893,8 +4753,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone6"
       onFocus={[Function]}
@@ -5149,8 +5007,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone7"
       onFocus={[Function]}
@@ -5341,8 +5197,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone8"
       onFocus={[Function]}
@@ -5421,8 +5275,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone9"
       onFocus={[Function]}
@@ -5629,8 +5481,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone10"
       onFocus={[Function]}
@@ -5757,8 +5607,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone11"
       onFocus={[Function]}
@@ -6029,8 +5877,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone12"
       onFocus={[Function]}
@@ -6093,8 +5939,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone13"
       onFocus={[Function]}
@@ -6269,8 +6113,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone14"
       onFocus={[Function]}
@@ -6333,8 +6175,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone15"
       onFocus={[Function]}
@@ -6413,8 +6253,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone16"
       onFocus={[Function]}
@@ -6493,8 +6331,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone17"
       onFocus={[Function]}
@@ -6557,8 +6393,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone18"
       onFocus={[Function]}
@@ -6829,8 +6663,6 @@ exports[`Storyshots Backstage|Samples basic 1`] = `
     className="c3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone19"
       onFocus={[Function]}
@@ -7515,12 +7347,6 @@ exports[`Storyshots Custom Functions|Console basic 1`] = `
       >
         <button
           aria-checked={true}
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-posinset={undefined}
-          aria-setsize={undefined}
           className=
               ms-Checkbox
               is-checked
@@ -7590,16 +7416,12 @@ exports[`Storyshots Custom Functions|Console basic 1`] = `
               &:focus .ms-Checkbox-text {
                 color: #333;
               }
-          data-ktp-execute-target={undefined}
           defaultChecked={true}
-          disabled={undefined}
           id="checkbox-69"
-          name={undefined}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           role="checkbox"
-          title={undefined}
           type="button"
         >
           <label
@@ -7647,7 +7469,6 @@ exports[`Storyshots Custom Functions|Console basic 1`] = `
                     background: Highlight;
                     border-color: Highlight;
                   }
-              data-ktp-target={undefined}
             >
               <i
                 aria-hidden={true}
@@ -8004,7 +7825,6 @@ exports[`Storyshots Custom Functions|Dashboard as standalone 1`] = `
     className="c1"
   >
     <div
-      className={undefined}
       style={
         Object {
           "display": "block",
@@ -8022,9 +7842,6 @@ exports[`Storyshots Custom Functions|Dashboard as standalone 1`] = `
         }
       >
         <div
-          aria-describedby={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               ms-CommandBar
@@ -8065,11 +7882,6 @@ exports[`Storyshots Custom Functions|Dashboard as standalone 1`] = `
                   }
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -8142,7 +7954,6 @@ exports[`Storyshots Custom Functions|Dashboard as standalone 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
@@ -8199,8 +8010,6 @@ exports[`Storyshots Custom Functions|Dashboard as standalone 1`] = `
     >
       <div>
         <div
-          aria-describedby={undefined}
-          aria-labelledby={undefined}
           className="ms-FocusZone"
           data-focuszone-id="FocusZone128"
           onFocus={[Function]}
@@ -8233,11 +8042,6 @@ exports[`Storyshots Custom Functions|Dashboard as standalone 1`] = `
             role="tablist"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={true}
               className=
                   ms-Button
@@ -8363,7 +8167,6 @@ exports[`Storyshots Custom Functions|Dashboard as standalone 1`] = `
                     color: #fff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               id="Pivot127-Tab0"
               name="Summary"
               onClick={[Function]}
@@ -8409,11 +8212,6 @@ exports[`Storyshots Custom Functions|Dashboard as standalone 1`] = `
               </div>
             </button>
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -8532,7 +8330,6 @@ exports[`Storyshots Custom Functions|Dashboard as standalone 1`] = `
                     color: #1d1d1d;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               id="Pivot127-Tab1"
               name="Console"
               onClick={[Function]}
@@ -8589,7 +8386,6 @@ exports[`Storyshots Custom Functions|Dashboard as standalone 1`] = `
     </div>
   </header>
   <div
-    aria-expanded={undefined}
     className=
         ms-MessageBar
         ms-MessageBar-singleline
@@ -8752,11 +8548,6 @@ exports[`Storyshots Custom Functions|Dashboard as standalone 1`] = `
       >
         <div>
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             className=
                 ms-Button
                 ms-Button--primary
@@ -8836,7 +8627,6 @@ exports[`Storyshots Custom Functions|Dashboard as standalone 1`] = `
                   color: Window;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -9285,7 +9075,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
     className="c1"
   >
     <div
-      className={undefined}
       style={
         Object {
           "display": "block",
@@ -9303,9 +9092,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
         }
       >
         <div
-          aria-describedby={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               ms-CommandBar
@@ -9346,11 +9132,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
                   }
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -9423,7 +9204,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
@@ -9485,11 +9265,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
                   }
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -9562,7 +9337,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
@@ -9619,8 +9393,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
     >
       <div>
         <div
-          aria-describedby={undefined}
-          aria-labelledby={undefined}
           className="ms-FocusZone"
           data-focuszone-id="FocusZone79"
           onFocus={[Function]}
@@ -9653,11 +9425,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
             role="tablist"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={true}
               className=
                   ms-Button
@@ -9783,7 +9550,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
                     color: #fff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               id="Pivot78-Tab0"
               name="Alpha"
               onClick={[Function]}
@@ -9829,11 +9595,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
               </div>
             </button>
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -9952,7 +9713,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
                     color: #1d1d1d;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               id="Pivot78-Tab1"
               name="Bravo"
               onClick={[Function]}
@@ -9998,11 +9758,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
               </div>
             </button>
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -10121,7 +9876,6 @@ exports[`Storyshots Custom Functions|Dashboard basic 1`] = `
                     color: #1d1d1d;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               id="Pivot78-Tab2"
               name="Charlie"
               onClick={[Function]}
@@ -10265,7 +10019,6 @@ exports[`Storyshots Custom Functions|Dashboard with actual tabs 1`] = `
     className="c1"
   >
     <div
-      className={undefined}
       style={
         Object {
           "display": "block",
@@ -10283,9 +10036,6 @@ exports[`Storyshots Custom Functions|Dashboard with actual tabs 1`] = `
         }
       >
         <div
-          aria-describedby={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               ms-CommandBar
@@ -10326,11 +10076,6 @@ exports[`Storyshots Custom Functions|Dashboard with actual tabs 1`] = `
                   }
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -10403,7 +10148,6 @@ exports[`Storyshots Custom Functions|Dashboard with actual tabs 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
@@ -10465,11 +10209,6 @@ exports[`Storyshots Custom Functions|Dashboard with actual tabs 1`] = `
                   }
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -10542,7 +10281,6 @@ exports[`Storyshots Custom Functions|Dashboard with actual tabs 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
@@ -10599,8 +10337,6 @@ exports[`Storyshots Custom Functions|Dashboard with actual tabs 1`] = `
     >
       <div>
         <div
-          aria-describedby={undefined}
-          aria-labelledby={undefined}
           className="ms-FocusZone"
           data-focuszone-id="FocusZone97"
           onFocus={[Function]}
@@ -10633,11 +10369,6 @@ exports[`Storyshots Custom Functions|Dashboard with actual tabs 1`] = `
             role="tablist"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={true}
               className=
                   ms-Button
@@ -10763,7 +10494,6 @@ exports[`Storyshots Custom Functions|Dashboard with actual tabs 1`] = `
                     color: #fff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               id="Pivot96-Tab0"
               name="Summary"
               onClick={[Function]}
@@ -10809,11 +10539,6 @@ exports[`Storyshots Custom Functions|Dashboard with actual tabs 1`] = `
               </div>
             </button>
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -10932,7 +10657,6 @@ exports[`Storyshots Custom Functions|Dashboard with actual tabs 1`] = `
                     color: #1d1d1d;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               id="Pivot96-Tab1"
               name="Console"
               onClick={[Function]}
@@ -11427,7 +11151,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
     className="c1"
   >
     <div
-      className={undefined}
       style={
         Object {
           "display": "block",
@@ -11445,9 +11168,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
         }
       >
         <div
-          aria-describedby={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               ms-CommandBar
@@ -11488,11 +11208,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
                   }
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -11565,7 +11280,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
@@ -11627,11 +11341,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
                   }
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -11704,7 +11413,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
@@ -11761,8 +11469,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
     >
       <div>
         <div
-          aria-describedby={undefined}
-          aria-labelledby={undefined}
           className="ms-FocusZone"
           data-focuszone-id="FocusZone112"
           onFocus={[Function]}
@@ -11795,11 +11501,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
             role="tablist"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={true}
               className=
                   ms-Button
@@ -11925,7 +11626,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
                     color: #fff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               id="Pivot111-Tab0"
               name="Summary"
               onClick={[Function]}
@@ -11971,11 +11671,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
               </div>
             </button>
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -12094,7 +11789,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
                     color: #1d1d1d;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               id="Pivot111-Tab1"
               name="Console"
               onClick={[Function]}
@@ -12151,7 +11845,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
     </div>
   </header>
   <div
-    aria-expanded={undefined}
     className=
         ms-MessageBar
         ms-MessageBar-singleline
@@ -12314,11 +12007,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
       >
         <div>
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             className=
                 ms-Button
                 ms-Button--primary
@@ -12398,7 +12086,6 @@ exports[`Storyshots Custom Functions|Dashboard with refresh 1`] = `
                   color: Window;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -14196,11 +13883,7 @@ exports[`Storyshots Custom Functions|Welcome basic 1`] = `
       </li>
     </ol>
     <button
-      aria-describedby={undefined}
       aria-disabled={true}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
       className=
           ms-Button
           ms-Button--primary
@@ -14359,7 +14042,6 @@ exports[`Storyshots IDE|Footer basic 1`] = `
   className="c0"
 >
   <div
-    className={undefined}
     style={
       Object {
         "display": "block",
@@ -14377,9 +14059,7 @@ exports[`Storyshots IDE|Footer basic 1`] = `
       }
     >
       <div
-        aria-describedby={undefined}
         aria-label="Use left and right arrow keys to navigate between commands"
-        aria-labelledby={undefined}
         className=
             ms-FocusZone
             ms-CommandBar
@@ -14433,11 +14113,6 @@ exports[`Storyshots IDE|Footer basic 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -14510,7 +14185,6 @@ exports[`Storyshots IDE|Footer basic 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               hidden={false}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -14573,11 +14247,7 @@ exports[`Storyshots IDE|Footer basic 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="Cycle editor theme"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -14650,7 +14320,6 @@ exports[`Storyshots IDE|Footer basic 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               hidden={false}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -14742,7 +14411,6 @@ exports[`Storyshots IDE|Footer basic 1`] = `
                 }
           >
             <div
-              aria-describedby={undefined}
               className="ms-TooltipHost host_a3f87333"
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
@@ -14750,11 +14418,7 @@ exports[`Storyshots IDE|Footer basic 1`] = `
               onMouseLeave={[Function]}
             >
               <a
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="Report an issue"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -14827,7 +14491,6 @@ exports[`Storyshots IDE|Footer basic 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 hidden={false}
                 href="https://github.com/OfficeDev/script-lab-react/issues/new/choose"
                 onClick={[Function]}
@@ -14897,7 +14560,6 @@ exports[`Storyshots IDE|Footer basic 1`] = `
                 }
           >
             <div
-              aria-describedby={undefined}
               className="ms-TooltipHost host_a3f87333"
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
@@ -14905,11 +14567,7 @@ exports[`Storyshots IDE|Footer basic 1`] = `
               onMouseLeave={[Function]}
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="Settings"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -14982,7 +14640,6 @@ exports[`Storyshots IDE|Footer basic 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
@@ -15061,7 +14718,6 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
   className="c0"
 >
   <div
-    className={undefined}
     style={
       Object {
         "display": "block",
@@ -15079,9 +14735,7 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
       }
     >
       <div
-        aria-describedby={undefined}
         aria-label="Use left and right arrow keys to navigate between commands"
-        aria-labelledby={undefined}
         className=
             ms-FocusZone
             ms-CommandBar
@@ -15122,14 +14776,9 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label={undefined}
-              aria-labelledby={undefined}
               aria-owns={null}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -15202,7 +14851,6 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               hidden={false}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -15308,11 +14956,6 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -15385,7 +15028,6 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               hidden={false}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -15448,11 +15090,7 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="Cycle editor theme"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -15525,7 +15163,6 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               hidden={false}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -15617,7 +15254,6 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
                 }
           >
             <div
-              aria-describedby={undefined}
               className="ms-TooltipHost host_a3f87333"
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
@@ -15625,11 +15261,7 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
               onMouseLeave={[Function]}
             >
               <a
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="Report an issue"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -15702,7 +15334,6 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 hidden={false}
                 href="https://github.com/OfficeDev/script-lab-react/issues/new/choose"
                 onClick={[Function]}
@@ -15772,7 +15403,6 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
                 }
           >
             <div
-              aria-describedby={undefined}
               className="ms-TooltipHost host_a3f87333"
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
@@ -15780,11 +15410,7 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
               onMouseLeave={[Function]}
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="Settings"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -15857,7 +15483,6 @@ exports[`Storyshots IDE|Footer isWeb 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
@@ -15936,7 +15561,6 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
   className="c0"
 >
   <div
-    className={undefined}
     style={
       Object {
         "display": "block",
@@ -15954,9 +15578,7 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
       }
     >
       <div
-        aria-describedby={undefined}
         aria-label="Use left and right arrow keys to navigate between commands"
-        aria-labelledby={undefined}
         className=
             ms-FocusZone
             ms-CommandBar
@@ -15997,11 +15619,6 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -16074,7 +15691,6 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               hidden={false}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -16151,11 +15767,6 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -16228,7 +15839,6 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               hidden={false}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -16291,11 +15901,7 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="Cycle editor theme"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -16368,7 +15974,6 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               hidden={false}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -16460,7 +16065,6 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
                 }
           >
             <div
-              aria-describedby={undefined}
               className="ms-TooltipHost host_a3f87333"
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
@@ -16468,11 +16072,7 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
               onMouseLeave={[Function]}
             >
               <a
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="Report an issue"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -16545,7 +16145,6 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 hidden={false}
                 href="https://github.com/OfficeDev/script-lab-react/issues/new/choose"
                 onClick={[Function]}
@@ -16615,7 +16214,6 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
                 }
           >
             <div
-              aria-describedby={undefined}
               className="ms-TooltipHost host_a3f87333"
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
@@ -16623,11 +16221,7 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
               onMouseLeave={[Function]}
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="Settings"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -16700,7 +16294,6 @@ exports[`Storyshots IDE|Footer with Custom Function Solutions 1`] = `
                       color: #ffffff;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 onKeyPress={[Function]}
@@ -16776,7 +16369,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
   className="c0"
 >
   <div
-    className={undefined}
     style={
       Object {
         "display": "block",
@@ -16794,9 +16386,7 @@ exports[`Storyshots IDE|Header basic 1`] = `
       }
     >
       <div
-        aria-describedby={undefined}
         aria-label="Use left and right arrow keys to navigate between commands"
-        aria-labelledby={undefined}
         className=
             ms-FocusZone
             ms-CommandBar
@@ -16837,11 +16427,7 @@ exports[`Storyshots IDE|Header basic 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="Backstage"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -16914,7 +16500,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -16976,11 +16561,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -17053,7 +16633,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -17097,7 +16676,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
                         text-align: center;
                         vertical-align: middle;
                       }
-                  data-icon-name={undefined}
                   role="presentation"
                 />
                 <div
@@ -17136,11 +16714,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
                 }
           >
             <a
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -17213,7 +16786,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               href="/run.html"
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -17299,11 +16871,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -17376,7 +16943,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -17462,14 +17028,9 @@ exports[`Storyshots IDE|Header basic 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label={undefined}
-              aria-labelledby={undefined}
               aria-owns={null}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -17542,7 +17103,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -17671,11 +17231,7 @@ exports[`Storyshots IDE|Header basic 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="Login"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -17748,7 +17304,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -17800,7 +17355,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
                             text-align: center;
                             width: 28px;
                           }
-                      style={undefined}
                     >
                       <div
                         aria-hidden="true"
@@ -17822,7 +17376,6 @@ exports[`Storyshots IDE|Header basic 1`] = `
                               box-sizing: border-box;
                               color: WindowText;
                             }
-                        style={undefined}
                       >
                         <i
                           aria-hidden={true}
@@ -17866,7 +17419,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
   className="c0"
 >
   <div
-    className={undefined}
     style={
       Object {
         "display": "block",
@@ -17884,9 +17436,7 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
       }
     >
       <div
-        aria-describedby={undefined}
         aria-label="Use left and right arrow keys to navigate between commands"
-        aria-labelledby={undefined}
         className=
             ms-FocusZone
             ms-CommandBar
@@ -17927,11 +17477,7 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="Backstage"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -18004,7 +17550,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -18066,11 +17611,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -18143,7 +17683,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -18187,7 +17726,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                         text-align: center;
                         vertical-align: middle;
                       }
-                  data-icon-name={undefined}
                   role="presentation"
                 />
                 <div
@@ -18226,11 +17764,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -18303,7 +17836,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -18389,11 +17921,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -18466,7 +17993,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -18552,14 +18078,9 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label={undefined}
-              aria-labelledby={undefined}
               aria-owns={null}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -18632,7 +18153,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -18761,11 +18281,7 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="Login"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -18838,7 +18354,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -18890,7 +18405,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                             text-align: center;
                             width: 28px;
                           }
-                      style={undefined}
                     >
                       <div
                         aria-hidden="true"
@@ -18912,7 +18426,6 @@ exports[`Storyshots IDE|Header custom functions view 1`] = `
                               box-sizing: border-box;
                               color: WindowText;
                             }
-                        style={undefined}
                       >
                         <i
                           aria-hidden={true}
@@ -18956,7 +18469,6 @@ exports[`Storyshots IDE|Header logging in 1`] = `
   className="c0"
 >
   <div
-    className={undefined}
     style={
       Object {
         "display": "block",
@@ -18974,9 +18486,7 @@ exports[`Storyshots IDE|Header logging in 1`] = `
       }
     >
       <div
-        aria-describedby={undefined}
         aria-label="Use left and right arrow keys to navigate between commands"
-        aria-labelledby={undefined}
         className=
             ms-FocusZone
             ms-CommandBar
@@ -19017,11 +18527,7 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="Backstage"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -19094,7 +18600,6 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -19156,11 +18661,6 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -19233,7 +18733,6 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -19277,7 +18776,6 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                         text-align: center;
                         vertical-align: middle;
                       }
-                  data-icon-name={undefined}
                   role="presentation"
                 />
                 <div
@@ -19316,11 +18814,6 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                 }
           >
             <a
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -19393,7 +18886,6 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               href="/run.html"
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -19479,11 +18971,6 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -19556,7 +19043,6 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -19642,14 +19128,9 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label={undefined}
-              aria-labelledby={undefined}
               aria-owns={null}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -19722,7 +19203,6 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -19851,11 +19331,7 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="Login"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -19928,7 +19404,6 @@ exports[`Storyshots IDE|Header logging in 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -20008,7 +19483,6 @@ exports[`Storyshots IDE|Header settings view 1`] = `
   className="c0"
 >
   <div
-    className={undefined}
     style={
       Object {
         "display": "block",
@@ -20026,9 +19500,7 @@ exports[`Storyshots IDE|Header settings view 1`] = `
       }
     >
       <div
-        aria-describedby={undefined}
         aria-label="Use left and right arrow keys to navigate between commands"
-        aria-labelledby={undefined}
         className=
             ms-FocusZone
             ms-CommandBar
@@ -20069,11 +19541,7 @@ exports[`Storyshots IDE|Header settings view 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="Back"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -20146,7 +19614,6 @@ exports[`Storyshots IDE|Header settings view 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -20208,11 +19675,6 @@ exports[`Storyshots IDE|Header settings view 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -20285,7 +19747,6 @@ exports[`Storyshots IDE|Header settings view 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -20329,7 +19790,6 @@ exports[`Storyshots IDE|Header settings view 1`] = `
                         text-align: center;
                         vertical-align: middle;
                       }
-                  data-icon-name={undefined}
                   role="presentation"
                 />
                 <div
@@ -20382,11 +19842,7 @@ exports[`Storyshots IDE|Header settings view 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="Login"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -20459,7 +19915,6 @@ exports[`Storyshots IDE|Header settings view 1`] = `
                     color: #ffffff;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -20511,7 +19966,6 @@ exports[`Storyshots IDE|Header settings view 1`] = `
                             text-align: center;
                             width: 28px;
                           }
-                      style={undefined}
                     >
                       <div
                         aria-hidden="true"
@@ -20533,7 +19987,6 @@ exports[`Storyshots IDE|Header settings view 1`] = `
                               box-sizing: border-box;
                               color: WindowText;
                             }
-                        style={undefined}
                       >
                         <i
                           aria-hidden={true}
@@ -20572,7 +20025,6 @@ exports[`Storyshots IDE|MessageBar basic error 1`] = `
   className="message-bar active"
 >
   <div
-    aria-expanded={undefined}
     className=
         ms-MessageBar
         ms-MessageBar--error
@@ -20730,11 +20182,7 @@ exports[`Storyshots IDE|MessageBar basic error 1`] = `
             }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-label="Close"
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--icon
@@ -20822,7 +20270,6 @@ exports[`Storyshots IDE|MessageBar basic error 1`] = `
                 -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -20883,7 +20330,6 @@ exports[`Storyshots IDE|MessageBar basic info 1`] = `
   className="message-bar active"
 >
   <div
-    aria-expanded={undefined}
     className=
         ms-MessageBar
         ms-MessageBar-singleline
@@ -21040,11 +20486,7 @@ exports[`Storyshots IDE|MessageBar basic info 1`] = `
             }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-label="Close"
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--icon
@@ -21132,7 +20574,6 @@ exports[`Storyshots IDE|MessageBar basic info 1`] = `
                 -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -21193,7 +20634,6 @@ exports[`Storyshots IDE|MessageBar basic success 1`] = `
   className="message-bar active"
 >
   <div
-    aria-expanded={undefined}
     className=
         ms-MessageBar
         ms-MessageBar--success
@@ -21351,11 +20791,7 @@ exports[`Storyshots IDE|MessageBar basic success 1`] = `
             }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-label="Close"
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--icon
@@ -21443,7 +20879,6 @@ exports[`Storyshots IDE|MessageBar basic success 1`] = `
                 -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -21504,7 +20939,6 @@ exports[`Storyshots IDE|MessageBar basic warning 1`] = `
   className="message-bar active"
 >
   <div
-    aria-expanded={undefined}
     className=
         ms-MessageBar
         ms-MessageBar--warning
@@ -21662,11 +21096,7 @@ exports[`Storyshots IDE|MessageBar basic warning 1`] = `
             }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-label="Close"
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--icon
@@ -21754,7 +21184,6 @@ exports[`Storyshots IDE|MessageBar basic warning 1`] = `
                 -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}

@@ -88,8 +88,10 @@ class ConsoleWithoutTheme extends React.Component<IConsole, IState> {
     this.scrollToBottom()
   }
 
-  setShouldScrollToBottom = (ev: React.FormEvent<HTMLElement>, checked: boolean) =>
-    this.setState({ shouldScrollToBottom: checked })
+  setShouldScrollToBottom = (
+    ev?: React.FormEvent<HTMLElement | HTMLInputElement> | undefined,
+    checked?: boolean | undefined,
+  ) => this.setState({ shouldScrollToBottom: !!checked })
 
   updateFilterQuery = () =>
     this.setState({
