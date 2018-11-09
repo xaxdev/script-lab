@@ -1,6 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "outDir": "build/dist",
+    "module": "esnext",
     "target": "es5",
     "allowJs": true,
     "skipLibCheck": true,
@@ -8,13 +10,20 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "typeRoots": [
+      "./src/interfaces",
+      "node_modules/@types",
+      "../../node_modules/@types"
+    ],
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve",
-    "typeRoots": ["./src/interfaces", "node_modules/@types", "../../node_modules/@types"]
+    "jsx": "preserve"
   },
-  "include": ["../interfaces/*", "./src/**/*"],
+  "include": [
+    "../interfaces/*",
+    "./src/**/*"
+  ],
   "exclude": [
     "node_modules",
     "build",
@@ -23,7 +32,6 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
-    "public",
-    "**/*.stories.tsx"
+    "public"
   ]
 }

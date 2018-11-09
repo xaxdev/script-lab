@@ -1,3 +1,7 @@
+import registerRequireContextHook from 'babel-plugin-require-context-hook/register'
+import '@babel/polyfill'
+registerRequireContextHook()
+
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 

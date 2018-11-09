@@ -13,6 +13,9 @@ module.exports = {
       moduleNameMapper: {
         'office-ui-fabric-react/lib/': 'office-ui-fabric-react/lib-commonjs/',
       },
+      transform: {
+        '^.+\\.jsx?$': '<rootDir>/testing/transform.js',
+      },
     },
   },
 }

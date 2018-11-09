@@ -6,19 +6,19 @@ import { exampleSolutions, exampleGistMetadata } from './MySolutions/MySolutions
 import { exampleSamples } from './Samples/Samples.stories'
 
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
 
+const voidFunc = () => {}
 const defaultBackstageProps: IProps = {
   activeSolution: exampleSolutions[2],
   sharedGistMetadata: exampleGistMetadata,
   samplesByGroup: exampleSamples,
-  solutions: exampleSolutions,
-  createNewSolution: action('create-new-solution'),
-  goBack: action('go-back'),
-  importGist: action('import-gist'),
-  openGist: action('open-gist'),
-  openSample: action('open-sample'),
-  openSolution: action('open-solution'),
+  solutions: exampleSolutions as ISolution[],
+  createNewSolution: voidFunc,
+  goBack: voidFunc,
+  importGist: voidFunc,
+  openGist: voidFunc,
+  openSample: voidFunc,
+  openSolution: voidFunc,
 }
 
 storiesOf('Backstage|All', module).add('basic', () => (

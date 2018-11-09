@@ -46,6 +46,7 @@ const defaultHeaderProps = {
     functionName: string,
   ) => {},
   terminateAllDirectScriptExecutionFunctions: () => {},
+  showDialog: () => {},
 }
 
 storiesOf('IDE|Header', module)

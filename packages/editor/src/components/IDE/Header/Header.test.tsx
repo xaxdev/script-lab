@@ -37,7 +37,7 @@ const actionProps = {
     subText: string,
     buttons: Array<{
       text: string
-      action: { type: string; payload: any }
+      action: { type: string; payload?: any }
       isPrimary: boolean
     }>,
   ) => {},

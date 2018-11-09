@@ -16,7 +16,11 @@ const voidFunc = () => {}
 
 storiesOf('IDE|MessageBar', module)
   .add('basic info', () => (
-    <MessageBar messageBarProps={defaultMessageBarProps} dismiss={voidFunc} />
+    <MessageBar
+      messageBarProps={defaultMessageBarProps}
+      dismiss={voidFunc}
+      buttonOnClick={voidFunc}
+    />
   ))
   .add('basic success', () => (
     <MessageBar
@@ -26,6 +30,7 @@ storiesOf('IDE|MessageBar', module)
         style: MessageBarType.success,
       }}
       dismiss={voidFunc}
+      buttonOnClick={voidFunc}
     />
   ))
   .add('basic warning', () => (
@@ -36,6 +41,7 @@ storiesOf('IDE|MessageBar', module)
         style: MessageBarType.warning,
       }}
       dismiss={voidFunc}
+      buttonOnClick={voidFunc}
     />
   ))
   .add('basic error', () => (
@@ -46,5 +52,6 @@ storiesOf('IDE|MessageBar', module)
         style: MessageBarType.error,
       }}
       dismiss={voidFunc}
+      buttonOnClick={voidFunc}
     />
   ))
