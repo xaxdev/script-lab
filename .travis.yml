@@ -8,7 +8,7 @@ branches:
     - master
     - beta
     - production
-    - migration
+    - migration # FIXME:
 
 cache: yarn
 
