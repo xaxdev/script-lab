@@ -10,6 +10,7 @@ import { getSettingsSolutionAndFiles } from '../settings';
 import { verifySettings } from './settings/sagas';
 import { getBoilerplate } from '../newSolutionData';
 import { HostType } from '@microsoft/office-js-helpers';
+import ensureFreshLocalStorage from 'common/lib/utilities/ensure.fresh.local.storage';
 import { getProfilePicUrlAndUsername } from '../services/github';
 
 interface IStoredGitHubState {
@@ -24,8 +25,7 @@ let lastSavedState: IState;
 
 export async function loadState(): Promise<Partial<IState>> {
   try {
-    // In order to fix the IE cross-tab issue (#147)
-    localStorage.setItem('playground_dummy_key', 'null');
+    ensureFreshLocalStorage();
 
     let { solutions, files } = loadAllSolutionsAndFiles();
 
@@ -50,6 +50,7 @@ export async function loadState(): Promise<Partial<IState>> {
 
     return { solutions: { metadata: solutions, files }, settings: settingsState, github };
   } catch (err) {
+    console.error(err);
     const settings = getSettingsSolutionAndFiles();
 
     return {
@@ -127,7 +128,7 @@ async function loadGitHubInfo(): Promise<IGitHubState> {
   const tokenStorage = localStorage.getItem('OAuth2Tokens');
   if (tokenStorage) {
     const parsedTokenStorage = JSON.parse(tokenStorage);
-    if ('GitHub' in parsedTokenStorage) {
+    if (parsedTokenStorage && 'GitHub' in parsedTokenStorage) {
       const token = parsedTokenStorage.GitHub.access_token;
       if (token) {
         return {
@@ -272,8 +273,7 @@ function loadLegacyScriptLabSnippets(): ISolution[] {
 
 // custom functions
 export const getIsCustomFunctionRunnerAlive = (): boolean => {
-  // In order to fix the IE cross-tab issue (#147)
-  localStorage.setItem('playground_dummy_key', 'null');
+  ensureFreshLocalStorage();
 
   const lastHeartbeat = localStorage.getItem(
     localStorageKeys.customFunctionsLastHeartbeatTimestamp,
@@ -282,8 +282,7 @@ export const getIsCustomFunctionRunnerAlive = (): boolean => {
 };
 
 export const getCustomFunctionCodeLastUpdated = (): number => {
-  // In order to fix the IE cross-tab issue (#147)
-  localStorage.setItem('playground_dummy_key', 'null');
+  ensureFreshLocalStorage();
 
   const lastUpdated = localStorage.getItem(
     localStorageKeys.customFunctionsLastUpdatedCodeTimestamp,
@@ -292,8 +291,7 @@ export const getCustomFunctionCodeLastUpdated = (): number => {
 };
 
 export const getCustomFunctionLogs = (): ILogData[] | null => {
-  // In order to fix the IE cross-tab issue (#147)
-  localStorage.setItem('playground_dummy_key', 'null');
+  ensureFreshLocalStorage();
 
   const logsString = localStorage.getItem(localStorageKeys.log);
 
