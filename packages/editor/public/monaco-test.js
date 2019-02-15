@@ -5,6 +5,10 @@ document.getElementById('go').onclick = function() {
   );
   console.log(html);
   window.document.write(html);
+  window.onerror = function(error) {
+    console.error(error);
+    document.body.children[0].textContent = error;
+  };
 };
 
 // Note: HTML taken from https://github.com/Microsoft/monaco-editor-samples/blob/master/browser-script-editor/index.html,
