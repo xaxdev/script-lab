@@ -8,8 +8,11 @@ class OfficeJsSink implements oteljs.TelemetrySink {
   }
 }
 
-export function initializeTelemetryLogger() {
-  console.info('[Telemetry] Initializing...');
+export function initializeTelemetryLogger(): void {
+  if (!isTelemetryEnabled()) {
+    return;
+  }
+
   telemetryLogger = new oteljs.TelemetryLogger();
   telemetryLogger.addSink(new OfficeJsSink());
 
@@ -22,16 +25,17 @@ export function initializeTelemetryLogger() {
       },
     },
   });
-
-  console.info('[Telemetry] Initialized');
 }
 
 export function sendTelemetryEvent(
   name: string,
   additionalDataFields: oteljs.DataField[],
 ) {
-  console.info(`[Telemetry] Sending event ${name}...`);
+  if (!isTelemetryEnabled()) {
+    return;
+  }
 
+  // For debugging only: console.info(`[Telemetry] Sending event ${name}...`);
   telemetryLogger.sendTelemetryEvent({
     eventName: 'Office.ScriptLab.' + name,
     eventFlags: {
@@ -44,3 +48,13 @@ export function sendTelemetryEvent(
     ],
   });
 }
+
+///////////////////////////////////////
+
+function isTelemetryEnabled(): boolean {
+  // For now, until complete privacy review, only enabling telemetry in local dev environment, not production:
+  const TELEMETRY_ENABLED = process.env.NODE_ENV !== 'production';
+  return TELEMETRY_ENABLED;
+}
+
+// cspell:ignore oteljs
