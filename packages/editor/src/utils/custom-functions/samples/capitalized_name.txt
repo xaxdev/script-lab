@@ -1,0 +1,31 @@
+// Can use custom name (e.g., in a different language)
+
+/** @CustomFunction */
+function ADD10(x: number): number {
+  return x + 10;
+}
+
+// result
+/*
+    [
+        {
+            "javascriptFunctionName": "ADD10",
+            "nonCapitalizedFullName": "TestNamespace.ADD10",
+            "status": "good",
+            "errors": [],
+            "metadata": {
+                "id": "TESTNAMESPACE.ADD10",
+                "name": "TESTNAMESPACE.ADD10",
+                "parameters": [
+                    {
+                        "name": "x",
+                        "type": "number"
+                    }
+                ],
+                "result": {
+                    "type": "number"
+                }
+            }
+        }
+    ]
+*/
