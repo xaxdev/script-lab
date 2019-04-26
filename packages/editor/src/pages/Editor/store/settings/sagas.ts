@@ -1,5 +1,6 @@
 import { put, takeEvery, call, select } from 'redux-saga/effects';
 import { getType, ActionType } from 'typesafe-actions';
+import YAML from 'js-yaml';
 
 import {
   settings as settingsActions,
@@ -11,7 +12,7 @@ import selectors from '../selectors';
 
 import isEqual from 'lodash/isEqual';
 
-import { allowedSettings, defaultSettings } from './utilities';
+import { allowedSettings, defaultSettings, invisibleDefaultSettings } from './utilities';
 
 import {
   SETTINGS_SOLUTION_ID,
@@ -27,7 +28,10 @@ export default function* settingsWatcher() {
 }
 
 export const verifySettings = parsed => {
-  const validKeys = Object.keys(defaultSettings);
+  const validKeys = [
+    ...Object.keys(defaultSettings),
+    ...Object.keys(invisibleDefaultSettings),
+  ];
   const parsedKeys = Object.keys(parsed);
   const allowedValueKeys = Object.keys(allowedSettings);
 
@@ -65,7 +69,7 @@ function* editSettingsCheckSaga(action: ActionType<typeof settingsActions.editFi
   }
 
   try {
-    const parsed = JSON.parse(action.payload.newSettings);
+    const parsed = YAML.safeLoad(action.payload.newSettings);
 
     const newSettings = verifySettings(parsed);
 
@@ -75,7 +79,7 @@ function* editSettingsCheckSaga(action: ActionType<typeof settingsActions.editFi
       selectors.solutions.getFile,
       USER_SETTINGS_FILE_ID,
     );
-    currentUserSettingsFile.content = JSON.stringify(newSettings, null, tabSize);
+    currentUserSettingsFile.content = YAML.safeDump(newSettings, { indent: tabSize });
     yield put(settingsActions.edit.success({ userSettings: newSettings }));
     yield put(
       solutionsActions.edit({
