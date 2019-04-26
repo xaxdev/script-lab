@@ -22,7 +22,11 @@ export const defaultSettings: ISettings = {
   'editor.wordWrap': 'bounded',
 };
 
-export const invisibleDefaultSettings: { [key: string]: any } = {};
+export const invisibleDefaultSettings: { [key: string]: any } = {
+  'jupyter.url': '',
+  'jupyter.token': '',
+  'jupyter.notebook': '',
+};
 
 const getTabSize = (userSettings: Partial<ISettings>): number =>
   userSettings && userSettings['editor.tabSize']
