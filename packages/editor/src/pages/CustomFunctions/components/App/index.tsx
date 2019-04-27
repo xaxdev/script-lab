@@ -13,22 +13,28 @@ import {
 } from 'common/lib/utilities/localStorage';
 import { getLogsFromAsyncStorage } from './utilities/logs';
 import { loadAllSolutionsAndFiles } from '../../../Editor/store/localStorage';
-import { invokeGlobalErrorHandler } from 'common/lib/utilities/splash.screen';
+import {
+  invokeGlobalErrorHandler,
+  hideSplashScreen,
+} from 'common/lib/utilities/splash.screen';
 import { ScriptLabError } from 'common/lib/utilities/error';
 import { IFunction } from 'custom-functions-metadata';
+import { JupyterNotebook } from './Jupyter/Jupyter';
+import { pause } from 'common/lib/utilities/misc';
 
 interface IState {
-  customFunctionsSummaryItems: Array<ICustomFunctionParseResult<any>>;
-  customFunctionsCode: string;
-
   runnerLastUpdated: number;
   customFunctionsSolutionLastModified: number;
 
   isStandalone: boolean;
-  engineStatus: ICustomFunctionEngineStatus | null;
 
   logs: ILogData[];
   error?: Error;
+
+  // Optional, since cannot be immediately determined in the constructor
+  engineStatus?: ICustomFunctionEngineStatus;
+  customFunctionsSummaryItems?: Array<ICustomFunctionParseResult<any>>;
+  customFunctionsCode?: string;
 }
 
 export interface IPropsToUI extends IState {
@@ -43,24 +49,25 @@ const AppHOC = (UI: React.ComponentType<IPropsToUI>) =>
     constructor(props: {}) {
       super(props);
 
-      const cfSolutions = getCustomFunctionsSolutions();
-      const registrationResult = getRegistrationResult(cfSolutions);
-
       this.state = {
         runnerLastUpdated: Date.now(),
         customFunctionsSolutionLastModified: getCFCodeLastModified(),
         isStandalone: !queryString.parse(window.location.href.split('?').slice(-1)[0])
           .backButton,
-        customFunctionsSummaryItems: registrationResult.parseResults,
-        customFunctionsCode: registrationResult.code,
-        engineStatus: null,
         logs: [],
       };
     }
 
     async componentDidMount() {
       const engineStatus = await getCustomFunctionEngineStatusSafe();
-      this.setState({ engineStatus: engineStatus });
+
+      const cfSolutions = getCustomFunctionsSolutions();
+      const registrationResult = await getRegistrationResult(cfSolutions);
+      this.setState({
+        engineStatus: engineStatus,
+        customFunctionsSummaryItems: registrationResult.parseResults,
+        customFunctionsCode: registrationResult.code,
+      });
 
       try {
         if (this.state.customFunctionsSummaryItems.length > 0) {
@@ -73,6 +80,8 @@ const AppHOC = (UI: React.ComponentType<IPropsToUI>) =>
         this.setState({
           error: e,
         });
+      } finally {
+        hideSplashScreen();
       }
 
       this.localStoragePollingInterval = setInterval(
@@ -131,35 +140,46 @@ function getCustomFunctionsSolutions(): ISolution[] {
   return filterCustomFunctions(solutions);
 }
 
-function getRegistrationResult(
+async function getRegistrationResult(
   cfSolutions: ISolution[],
-): { parseResults: Array<ICustomFunctionParseResult<IFunction>>; code: string } {
+): Promise<{ parseResults: Array<ICustomFunctionParseResult<IFunction>>; code: string }> {
   const hasPython = cfSolutions
     .map(solution => findScript(solution))
     .find(script => script.language === 'python');
 
   if (hasPython) {
-    const userSettings = JSON.parse(localStorage.getItem('userSettings') || '{}');
-    ['jupyter.url', 'jupyter.token', 'jupyter.notebook']
-      .map(settingName => ({
-        name: settingName,
-        value: userSettings[settingName],
-      }))
-      .forEach(pair => {
-        if (!pair.value || (pair.value as string).trim().length === 0) {
-          invokeGlobalErrorHandler(
-            new ScriptLabError(
-              `To support Python custom functions, you must follow the setup steps ` +
-                `and enter the required settings in the editor's "Settings" page. ` +
-                `Please do so now and then reload this page.`,
-            ),
-            { showExpanded: true },
-          );
-        }
-      });
-
-    return { code: '', parseResults: [] };
+    return getRegistrationResultPython();
   } else {
     return getCustomFunctionsInfoForRegistration(cfSolutions);
   }
+}
+
+async function getRegistrationResultPython(): Promise<{
+  parseResults: Array<ICustomFunctionParseResult<IFunction>>;
+  code: string;
+}> {
+  const userSettings = JSON.parse(localStorage.getItem('userSettings') || '{}');
+  const [url, token, notebookName] = ['jupyter.url', 'jupyter.token', 'jupyter.notebook']
+    .map(settingName => ({
+      name: settingName,
+      value: userSettings[settingName],
+    }))
+    .map(pair => {
+      if (!pair.value || (pair.value as string).trim().length === 0) {
+        invokeGlobalErrorHandler(
+          new ScriptLabError(
+            `To support Python custom functions, you must follow the setup steps ` +
+              `and enter the required settings in the editor's "Settings" page. ` +
+              `Please do so now and then reload this page.`,
+          ),
+          { showExpanded: true },
+        );
+      }
+      return pair.value;
+    });
+
+  const notebook = new JupyterNotebook({ baseUrl: url, token: token }, notebookName);
+  await notebook.ensureConnected();
+
+  return { code: '', parseResults: [] };
 }
