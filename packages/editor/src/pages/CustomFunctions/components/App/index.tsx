@@ -5,6 +5,7 @@ import {
   registerCustomFunctions,
   getCustomFunctionEngineStatusSafe,
   filterCustomFunctions,
+  findScript,
 } from './utilities';
 import {
   getCustomFunctionCodeLastUpdated as getCFCodeLastModified,
@@ -12,6 +13,9 @@ import {
 } from 'common/lib/utilities/localStorage';
 import { getLogsFromAsyncStorage } from './utilities/logs';
 import { loadAllSolutionsAndFiles } from '../../../Editor/store/localStorage';
+import { invokeGlobalErrorHandler } from 'common/lib/utilities/splash.screen';
+import { ScriptLabError } from 'common/lib/utilities/error';
+import { IFunction } from 'custom-functions-metadata';
 
 interface IState {
   customFunctionsSummaryItems: Array<ICustomFunctionParseResult<any>>;
@@ -35,13 +39,12 @@ export interface IPropsToUI extends IState {
 const AppHOC = (UI: React.ComponentType<IPropsToUI>) =>
   class App extends Component<{}, IState> {
     private localStoragePollingInterval: any;
-    private cfSolutions: ISolution[];
 
     constructor(props: {}) {
       super(props);
 
-      this.cfSolutions = getCustomFunctionsSolutions();
-      const registrationResult = getCustomFunctionsInfoForRegistration(this.cfSolutions);
+      const cfSolutions = getCustomFunctionsSolutions();
+      const registrationResult = getRegistrationResult(cfSolutions);
 
       this.state = {
         runnerLastUpdated: Date.now(),
@@ -126,4 +129,37 @@ function getCustomFunctionsSolutions(): ISolution[] {
   });
 
   return filterCustomFunctions(solutions);
+}
+
+function getRegistrationResult(
+  cfSolutions: ISolution[],
+): { parseResults: Array<ICustomFunctionParseResult<IFunction>>; code: string } {
+  const hasPython = cfSolutions
+    .map(solution => findScript(solution))
+    .find(script => script.language === 'python');
+
+  if (hasPython) {
+    const userSettings = JSON.parse(localStorage.getItem('userSettings') || '{}');
+    ['jupyter.url', 'jupyter.token', 'jupyter.notebook']
+      .map(settingName => ({
+        name: settingName,
+        value: userSettings[settingName],
+      }))
+      .forEach(pair => {
+        if (!pair.value || (pair.value as string).trim().length === 0) {
+          invokeGlobalErrorHandler(
+            new ScriptLabError(
+              `To support Python custom functions, you must follow the setup steps ` +
+                `and enter the required settings in the editor's "Settings" page. ` +
+                `Please do so now and then reload this page.`,
+            ),
+            { showExpanded: true },
+          );
+        }
+      });
+
+    return { code: '', parseResults: [] };
+  } else {
+    return getCustomFunctionsInfoForRegistration(cfSolutions);
+  }
 }
