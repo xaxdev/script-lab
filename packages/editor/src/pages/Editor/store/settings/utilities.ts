@@ -39,6 +39,10 @@ const getDefaultSettingsContent = (userSettings: Partial<ISettings>): string => 
 };
 
 const getUserSettingsContent = (userSettings: Partial<ISettings>): string => {
+  if (Object.keys(userSettings).length === 0) {
+    return '';
+  }
+
   const tabSize = getTabSize(userSettings);
   return YAML.safeDump(userSettings, { indent: tabSize });
 };

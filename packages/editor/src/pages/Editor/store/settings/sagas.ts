@@ -27,7 +27,7 @@ export default function* settingsWatcher() {
   yield takeEvery(getType(settingsActions.cycleEditorTheme), cycleEditorThemeSaga);
 }
 
-export const verifySettings = parsed => {
+export const verifySettings = (parsed): Partial<ISettings> => {
   const validKeys = [
     ...Object.keys(defaultSettings),
     ...Object.keys(invisibleDefaultSettings),
@@ -58,28 +58,21 @@ export const verifySettings = parsed => {
 };
 
 function* editSettingsCheckSaga(action: ActionType<typeof settingsActions.editFile>) {
-  if (action.payload.newSettings.trim() === '') {
-    yield put(
-      editorActions.openFile({
-        solutionId: SETTINGS_SOLUTION_ID,
-        fileId: DEFAULT_SETTINGS_FILE_ID,
-      }),
-    );
-    return;
-  }
-
   try {
-    const parsed = YAML.safeLoad(action.payload.newSettings);
-
-    const newSettings = verifySettings(parsed);
-
+    const isEmpty = action.payload.newSettings.trim() === '';
+    const newSettings = isEmpty
+      ? {}
+      : verifySettings(YAML.safeLoad(action.payload.newSettings));
     const tabSize = { ...defaultSettings, ...newSettings }['editor.tabSize'];
 
-    const currentUserSettingsFile = yield select(
+    const currentUserSettingsFile: IFile = yield select(
       selectors.solutions.getFile,
       USER_SETTINGS_FILE_ID,
     );
-    currentUserSettingsFile.content = YAML.safeDump(newSettings, { indent: tabSize });
+
+    currentUserSettingsFile.content = isEmpty
+      ? ''
+      : YAML.safeDump(newSettings, { indent: tabSize });
     yield put(settingsActions.edit.success({ userSettings: newSettings }));
     yield put(
       solutionsActions.edit({
