@@ -255,7 +255,7 @@ export class JupyterNotebook {
     }
 
     private handleIopubMessage(msg: JupyterWebSocketMessage) {
-        if (msg.msg_type === JupyterWebSocketMessageType.execute_result) {
+        if (msg.msg_type === JupyterWebSocketMessageType.execute_result || msg.msg_type === "execute_reply" /*FIXME:*/) {
             let content: JuypterWebSocketMessageExecuteResultContent = msg.content;
             let text = content.data['text/plain'];
             let parentMsgId = msg.parent_header.msg_id;

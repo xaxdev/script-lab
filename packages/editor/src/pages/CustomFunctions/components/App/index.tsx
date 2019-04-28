@@ -16,6 +16,7 @@ import { loadAllSolutionsAndFiles } from '../../../Editor/store/localStorage';
 import {
   invokeGlobalErrorHandler,
   hideSplashScreen,
+  showSplashScreen,
 } from 'common/lib/utilities/splash.screen';
 import { ScriptLabError } from 'common/lib/utilities/error';
 import { IFunction } from 'custom-functions-metadata';
@@ -98,6 +99,10 @@ const AppHOC = (UI: React.ComponentType<IPropsToUI>) =>
     }
 
     fetchLogs = async () => {
+      if (!this.state.engineStatus) {
+        return;
+      }
+
       const isUsingAsyncStorage =
         !!this.state.engineStatus.nativeRuntime &&
         (window as any).Office &&
@@ -143,18 +148,21 @@ function getCustomFunctionsSolutions(): ISolution[] {
 async function getRegistrationResult(
   cfSolutions: ISolution[],
 ): Promise<{ parseResults: Array<ICustomFunctionParseResult<IFunction>>; code: string }> {
-  const hasPython = cfSolutions
-    .map(solution => findScript(solution))
-    .find(script => script.language === 'python');
+  const pythonCFs = cfSolutions
+    .map(solution => ({ solution, script: findScript(solution) }))
+    .filter(({ script }) => script.language === 'python')
+    .map(pair => pair.solution);
 
-  if (hasPython) {
-    return getRegistrationResultPython();
+  if (pythonCFs.length > 0) {
+    return getRegistrationResultPython(pythonCFs);
   } else {
     return getCustomFunctionsInfoForRegistration(cfSolutions);
   }
 }
 
-async function getRegistrationResultPython(): Promise<{
+async function getRegistrationResultPython(
+  pythonCFs: ISolution[],
+): Promise<{
   parseResults: Array<ICustomFunctionParseResult<IFunction>>;
   code: string;
 }> {
@@ -179,7 +187,30 @@ async function getRegistrationResultPython(): Promise<{
     });
 
   const notebook = new JupyterNotebook({ baseUrl: url, token: token }, notebookName);
-  await notebook.ensureConnected();
+  showSplashScreen(
+    `Attempting to connect to your Jupyter notebook, to allow execution of Python custom functions. Please wait...`,
+  );
+
+  try {
+    await notebook.ensureConnected();
+
+    const code = pythonCFs
+      .filter(solution => !solution.options.isUntrusted)
+      .map(solution => findScript(solution).content)
+      .join('\n\n');
+
+    debugger;
+    await notebook.executeCode(code);
+    debugger;
+  } catch (e) {
+    invokeGlobalErrorHandler(
+      new ScriptLabError(
+        'Could not connect to Jupyter notebook. ' +
+          `Please ensure that you've entered the correct Jupyter settings and that Jupyter is running`,
+        e,
+      ),
+    );
+  }
 
   return { code: '', parseResults: [] };
 }
