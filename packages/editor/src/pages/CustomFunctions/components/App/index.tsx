@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
+import { IFunction } from 'custom-functions-metadata';
 import {
   getCustomFunctionsInfoForRegistration,
   registerCustomFunctions,
@@ -18,10 +19,9 @@ import {
   hideSplashScreen,
   showSplashScreen,
 } from 'common/lib/utilities/splash.screen';
+import { stripSpaces } from 'common/lib/utilities/string';
 import { ScriptLabError } from 'common/lib/utilities/error';
-import { IFunction } from 'custom-functions-metadata';
 import { JupyterNotebook } from './Jupyter/Jupyter';
-import { pause } from 'common/lib/utilities/misc';
 
 interface IState {
   runnerLastUpdated: number;
@@ -192,16 +192,36 @@ async function getRegistrationResultPython(
   );
 
   try {
-    await notebook.ensureConnected();
+    const code =
+      pythonCFs
+        .filter(solution => !solution.options.isUntrusted)
+        .map(solution => findScript(solution).content)
+        .join('\n\n') +
+      '\n\n' +
+      stripSpaces(`
+      import customfunctionmanager
+      customfunctionmanager.generateMetadata()
+    `);
 
-    const code = pythonCFs
-      .filter(solution => !solution.options.isUntrusted)
-      .map(solution => findScript(solution).content)
-      .join('\n\n');
+    const rawResult: string = await notebook.executeCode(code);
+    // FIXME: ask Shaofeng: result comes with a leading and trailing single tick mark.  So remove both
+    const result: ICustomFunctionsRegistrationApiMetadata<IFunction> = JSON.parse(
+      rawResult.substr(1, rawResult.length - 2),
+    );
 
-    debugger;
-    await notebook.executeCode(code);
-    debugger;
+    return {
+      code: '',
+      parseResults: result.functions.map(
+        (metadata): ICustomFunctionParseResult<IFunction> => {
+          return {
+            javascriptFunctionName: null,
+            nonCapitalizedFullName: metadata.name,
+            metadata: metadata,
+            status: 'good', // Note: assuming success only
+          };
+        },
+      ),
+    };
   } catch (e) {
     invokeGlobalErrorHandler(
       new ScriptLabError(
@@ -210,7 +230,6 @@ async function getRegistrationResultPython(
         e,
       ),
     );
+    return { code: '', parseResults: [] };
   }
-
-  return { code: '', parseResults: [] };
 }

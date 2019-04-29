@@ -54,6 +54,10 @@ interface JupyterWebSocketMessage {
     channel: string
 }
 
+interface JuypterWebSocketMessageExecuteReplyContent {
+    status: "ok" | string
+}
+
 interface JuypterWebSocketMessageExecuteResultContent{
     data: {[key:string]:any},
     metadata?: {[key:string]:any}, 
@@ -187,7 +191,7 @@ export class JupyterNotebook {
         }
     }
 
-    executeCode(code: string): Promise<string> {
+    executeCode(code: string): Promise<any> {
         return this.ensureConnected()
             .then(() => {
                 var content = {
@@ -255,7 +259,7 @@ export class JupyterNotebook {
     }
 
     private handleIopubMessage(msg: JupyterWebSocketMessage) {
-        if (msg.msg_type === JupyterWebSocketMessageType.execute_result || msg.msg_type === "execute_reply" /*FIXME:*/) {
+        if (msg.msg_type === JupyterWebSocketMessageType.execute_result) {
             let content: JuypterWebSocketMessageExecuteResultContent = msg.content;
             let text = content.data['text/plain'];
             let parentMsgId = msg.parent_header.msg_id;
@@ -403,14 +407,10 @@ export class Util {
     };
 
     static log(text: string): void {
-        FIXME:
-        debugger;
         console.log(text);
     }
 
     static logResult(text: string): void {
-        debugger;
-        FIXME:
         console.log(text);
     }
 }

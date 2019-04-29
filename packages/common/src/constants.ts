@@ -10,8 +10,7 @@ export const SCRIPT_URLS = {
     'https://appsforoffice.microsoft.com/lib/preview/hosted/custom-functions-runtime.js',
   DEFAULT_OFFICE_JS: 'https://appsforoffice.microsoft.com/lib/1/hosted/office.js',
   OFFICE_JS_FOR_CUSTOM_FUNCTIONS_DASHBOARD:
-    'https://unpkg.com/@microsoft/office-js@1.1.12-custom.8/dist/office.debug.js',
-  // FIXME: 'https://appsforoffice.microsoft.com/lib/beta/hosted/office.js',
+    'https://appsforoffice.microsoft.com/lib/beta/hosted/office.js',
   MONACO_LOADER: `/external/monaco-editor-${
     HYPHENATED_PACKAGE_VERSIONS['monaco-editor']
   }/vs/loader.js`,
