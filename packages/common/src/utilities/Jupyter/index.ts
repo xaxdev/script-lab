@@ -271,9 +271,11 @@ export class JupyterNotebook {
       let text = content.data['text/plain'];
       let parentMsgId = msg.parent_header.msg_id;
       let resolve = this.m_executePromiseMap[parentMsgId];
-      delete this.m_executePromiseMap[parentMsgId];
       Util.log('ExecuteResult=' + text);
-      resolve(text);
+      if (resolve) {
+        delete this.m_executePromiseMap[parentMsgId];
+        resolve(text);
+      }
     }
   }
 
@@ -425,3 +427,5 @@ export class Util {
     console.log(text);
   }
 }
+
+Jupypter.setLoggers({});
