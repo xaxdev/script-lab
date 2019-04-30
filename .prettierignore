@@ -9,5 +9,3 @@ node_modules
 dist
 coverage
 lib
-
-packages/editor/src/pages/CustomFunctions/components/App/Jupyter/*

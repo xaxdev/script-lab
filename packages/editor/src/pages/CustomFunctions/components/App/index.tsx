@@ -21,7 +21,7 @@ import {
 } from 'common/lib/utilities/splash.screen';
 import { stripSpaces } from 'common/lib/utilities/string';
 import { ScriptLabError } from 'common/lib/utilities/error';
-import { JupyterNotebook } from './Jupyter/Jupyter';
+import { JupyterNotebook, PythonCodeHelper } from 'common/lib/utilities/Jupyter';
 
 interface IState {
   runnerLastUpdated: number;
@@ -203,10 +203,8 @@ async function getRegistrationResultPython(
       customfunctionmanager.generateMetadata()
     `);
 
-    const rawResult: string = await notebook.executeCode(code);
-    // FIXME: ask Shaofeng: result comes with a leading and trailing single tick mark.  So remove both
     const result: ICustomFunctionsRegistrationApiMetadata<IFunction> = JSON.parse(
-      rawResult.substr(1, rawResult.length - 2),
+      PythonCodeHelper.parseFromPythonLiteral(await notebook.executeCode(code)),
     );
 
     return {
